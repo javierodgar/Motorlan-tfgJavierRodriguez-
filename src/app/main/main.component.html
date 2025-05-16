@@ -177,13 +177,20 @@
         />
       </div>
 
-      <div class="selected-hashtags" *ngIf="selectedHashtags.length > 0">
-        <strong>{{ textosMain?.['hashtagsAnadidos'] }}</strong>
-        <span class="hashtag-item" *ngFor="let hashtag of selectedHashtags">
-          {{ hashtag }}
-          <button type="button" (click)="removeSelectedHashtag(hashtag)">x</button>
-        </span>
+      
+
+      <div *ngIf="selectedHashtags.length > 0" class="selected-hashtags-container">
+    <label class="selected-hashtags-label" style="width: 100%;  overflow-wrap: anywhere; white-space: normal; word-break: break-word;">{{ textosMain?.['hashtagsSeleccionadosLabel'] }}</label>
+    <div *ngFor="let hashtag of selectedHashtags; let last = last">
+      <div class="hashtag-item-container">
+        <span class="hashtag-text">{{ hashtag }}</span>
+        <button type="button" (click)="removeSelectedHashtag(hashtag)" class="remove-hashtag-button">
+          {{ textosMain?.['eliminarBoton'] }}
+        </button>
       </div>
+      <hr *ngIf="!last" class="hashtag-separator-hr">
+    </div>
+  </div>
 
       <label for="imagen">{{ textosMain?.['imagenOpcionalLabel'] }}</label>
       <input type="file" id="imagen" (change)="onFileChange($event)" accept="image/*" />

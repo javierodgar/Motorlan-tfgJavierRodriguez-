@@ -30,6 +30,19 @@ try {
     $username = $data->username;
     $decremento = -0.1;
 
+    $query = "select valoracion_global from Usuarios where usuario = :username";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":username", $username, PDO::PARAM_STR);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $valoracion_global = $row['valoracion_global'];
+
+    if ($valoracion_global <= 0) {
+        http_response_code(400);
+        echo json_encode(["message" => "El usuario ya tiene una valoración de 1."]);
+        exit;
+    }
+
     $query = "UPDATE Usuarios SET valoracion_global = valoracion_global + :decremento WHERE usuario = :username";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":decremento", $decremento, PDO::PARAM_STR);

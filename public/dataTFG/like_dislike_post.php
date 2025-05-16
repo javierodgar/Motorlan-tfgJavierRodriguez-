@@ -115,6 +115,22 @@ try {
         }
     }
     if ($accionRegistrada && isset($factorValoracion)) {
+
+        $query = "select valoracion_global from Usuarios where usuario = :username";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(":username", $autorUsername, PDO::PARAM_STR);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $valoracion_global = $row['valoracion_global'];
+
+        if ($valoracion_global <= 0 && $tipo === 'dislike') {
+            exit;
+        }
+
+        if ($valoracion_global >= 5 && $tipo === 'like') {
+            exit;
+        }
+
         $updateValoracionQuery = "UPDATE Usuarios SET valoracion_global = valoracion_global + :factor WHERE usuario = :autor_username";
         $updateValoracionStmt = $pdo->prepare($updateValoracionQuery);
         $updateValoracionStmt->bindParam(":factor", $factorValoracion, PDO::PARAM_STR);

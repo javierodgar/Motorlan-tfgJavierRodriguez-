@@ -108,6 +108,21 @@ try {
         }
     }
 
+    $query = "SELECT valoracion_global FROM Usuarios WHERE usuario = :autor_username";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":autor_username", $autor_username_evento, PDO::PARAM_STR);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $valoracion_global = $row['valoracion_global'];
+
+    if ($valoracion_global <= 0 && $tipo === 'dislike') {
+        exit;
+    }
+
+    if ($valoracion_global >= 5 && $tipo === 'like') {
+        exit;
+    }
+
     if ($accionRegistrada && isset($factorValoracionEvento) && $autor_username_evento) {
         $updateValoracionQuery = "UPDATE Usuarios SET valoracion_global = valoracion_global + :factor WHERE usuario = :autor_username";
         $updateValoracionStmt = $pdo->prepare($updateValoracionQuery);

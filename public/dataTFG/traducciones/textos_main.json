@@ -26,7 +26,9 @@
       "destacadasTab": "Destacadas",
       "eventsTab": "Eventos",
       "contenidoOfensivo": "El título o el texto de la publicación contiene palabras ofensivas. Por favor, revísalo.",
-      "imagenPreviewLabel": "vista previa de la imagen:"
+      "imagenPreviewLabel": "vista previa de la imagen:",
+      "hashtagsSeleccionadosLabel": "Hashtags Seleccionados:",
+      "eliminarBoton": "Eliminar" 
     },
     "en": {
       "tituloPagina": "MotorLand",
@@ -55,6 +57,8 @@
       "destacadasTab": "Featured",
       "eventsTab": "Events",
       "contenidoOfensivo": "The title or text of the post contains offensive words. Please review it.",
-      "imagenPreviewLabel": "selected image preview:"
+      "imagenPreviewLabel": "selected image preview:",
+      "hashtagsSeleccionadosLabel": "Selected Hashtags:",
+      "eliminarBoton": "Delete"
     }
   }
