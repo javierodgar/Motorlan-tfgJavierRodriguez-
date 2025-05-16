@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 if (isset($_GET['archivo'])) {
     $nombreArchivo = $_GET['archivo'];
-    $rutaArchivo = './' . $nombreArchivo . '.json'; // Asegúrate de que la ruta sea correcta
+    $rutaArchivo = './' . $nombreArchivo . '.json';
 
     if (file_exists($rutaArchivo)) {
         $contenido = file_get_contents($rutaArchivo);
