@@ -34,7 +34,7 @@ export class EventoDetalleComponent implements OnInit, OnDestroy {
     mensajeRecibido: string = '';
     nuevoComentario: string = '';
     comentarios: any[] = [];
-    valoracionUsuarioLogeado: number = 0; 
+    valoracionUsuarioLogeado: string = ''; 
 
     commentBeingEditedId: number | null = null;
     editText: string = '';
@@ -99,7 +99,7 @@ export class EventoDetalleComponent implements OnInit, OnDestroy {
         this.idiomaActual = this.getCookie('lang') || 'es';
         this.loggedInUsername = this.getCookie('username');
         this.cargarTextosDetalleEvento('texto_evento_detalle');
-        this.valoracionUsuarioLogeado = parseInt(this.getCookie('valoracionUsuario') || '0');
+        this.valoracionUsuarioLogeado = this.getCookie('valoracionUsuario') || '0';
         this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
             this.eventoId = +params['id'];
             this.obtenerIdUsuarioLogueado(this.loggedInUsername);
@@ -238,7 +238,8 @@ export class EventoDetalleComponent implements OnInit, OnDestroy {
     
       
         if (this.loggedInUsername) {
-          if(this.valoracionUsuarioLogeado >= 3.999){
+          console.log(parseFloat(this.valoracionUsuarioLogeado))
+          if(parseFloat(this.valoracionUsuarioLogeado) >= 3.499){
             this.serviciosService.inscribirseEvento(this.eventoId, this.loggedInUsername).pipe(takeUntil(this.destroy$)).subscribe(
             (response) => {
               console.log('Respuesta de inscripción:', response);
@@ -249,10 +250,16 @@ export class EventoDetalleComponent implements OnInit, OnDestroy {
             }
           );
           } else {
-            console.warn('No puedes inscribirte si no tienes una valoración de 4 o superior.');
+            this.showAlert = true;
+                this.alertText = this.textosDetalleEvento['inscripcionError'];
+                this.alertColor = 'red';
+                setTimeout(() => {
+                  this.showAlert = false;
+                }, 3000);
           }
         } else {
           console.warn('Debes estar logueado para inscribirte.');
+          
         }
       
     }

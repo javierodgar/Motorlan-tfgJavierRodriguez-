@@ -60,3 +60,10 @@
     (eventoCreadoExitoso)="onEventoCreadoExitoso()"
     *ngIf="mostrarModalCrearEvento">
   </app-crear-eventos>
+
+  <app-alert
+    *ngIf="showAlert"
+    [text]="alertText"
+    [backgroundColor]="alertColor"
+>
+</app-alert>

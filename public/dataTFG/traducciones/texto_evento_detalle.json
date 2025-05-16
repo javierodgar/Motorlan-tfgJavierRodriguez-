@@ -25,7 +25,8 @@
       "cancelarEdicionComentarioBoton": "Cancelar",
       "cargandoEventoParrafo": "Cargando detalles del evento...",
       "noEventoSeleccionadoParrafo": "No se ha seleccionado ningún evento.",
-      "eventoIniciado": "El evento ya ha comenzado deseas Inscribirte?"
+      "eventoIniciado": "El evento ya ha comenzado deseas Inscribirte?",
+      "inscripcionError": "No puedes inscribirte si no tienes una valoración de 3.5 o superior."
     },
     "en": {
       "mostrarPepinilloBoton": "Show Pickle",
@@ -53,6 +54,7 @@
       "cancelarEdicionComentarioBoton": "Cancel",
       "cargandoEventoParrafo": "Loading event details...",
       "noEventoSeleccionadoParrafo": "No event selected.",
-      "eventoIniciado": "The event has already started, do you want to register?"
+      "eventoIniciado": "The event has already started, do you want to register?",
+      "inscripcionError": "You can't register if you don't have a rating of 3.5 or higher."
     }
   }

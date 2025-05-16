@@ -8,7 +8,8 @@
       "noEventosEncontrados": "No se encontraron eventos con el criterio de búsqueda \"{{filtro}}\".",
       "comienzaLabel": "Comienza:",
       "noMasEventos": "No hay más eventos.",
-      "cargandoMas": "Cargando más eventos..."
+      "cargandoMas": "Cargando más eventos...",
+      "EventCreateError": "Debes tener una valoración de al menos 4 para crear un evento."
     },
     "en": {
       "tituloEventos": "Events",
@@ -19,6 +20,7 @@
       "noEventosEncontrados": "No events found with the search criteria \"{{filtro}}\".",
       "comienzaLabel": "Starts:",
       "noMasEventos": "No more events.",
-      "cargandoMas": "Loading more events..."
+      "cargandoMas": "Loading more events...",
+      "EventCreateError": "You must have a rating of at least 4 to create an event."
     }
   }

@@ -368,11 +368,13 @@ export class MainComponent {
     if (this.username) {
       this.servicios.obtenerImagenPerfil(this.username).subscribe({
         next: (data) => {
+          console.log(data.valoracion_global)
+          this.setCookie('valoracionUsuario', data.valoracion_global, 1);
           if (data && data.profile_image) {
             this.profileImageUrl =  data.profile_image;
             this.errorMessageProfileImage = null;
             console.log('URL de la imagen de perfil:', this.profileImageUrl);
-            this.setCookie('valoracionUsuario', data.valoracion_global, 1);
+            
           } else {
             this.profileImageUrl = null;
             this.errorMessageProfileImage = data?.message || 'No se encontró la imagen de perfil.';

@@ -5,10 +5,11 @@ import { CrearEventosComponent } from './crear-eventos/crear-eventos.component';
 import { ServiciosEventosService } from '../servicios-eventos.service';
 import { Router } from '@angular/router';
 import { TraduccionesService } from '../traducciones.service';
+import { AlertComponent } from '../alert/alert.component';
 @Component({
   selector: 'app-eventos',
   standalone: true,
-  imports: [CommonModule, FormsModule, CrearEventosComponent],
+  imports: [CommonModule, FormsModule, CrearEventosComponent, AlertComponent],
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.css']
 })
@@ -17,8 +18,13 @@ export class EventosComponent implements OnInit {
   eventosFinalizados: any[] = [];
   filtroBusqueda: string = '';
   mostrarModalCrearEvento: boolean = false;
-  valoracionUsuario: number = 0;
+  valoracionUsuario: any = 0;
   username: any = '';
+
+  showAlert: boolean = false;
+  alertText: string = '';     
+  alertColor: string = 'red';  
+  errorMessage: string = '';
 
   verEventosFinalizados: boolean = false; 
 
@@ -55,7 +61,7 @@ export class EventosComponent implements OnInit {
     this.idiomaActual = this.getCookie('lang') || 'es';
     this.cargarTextosEventos('textos_eventos'); 
     this.cargarEventos();
-    this.valoracionUsuario = parseInt(this.getCookie('valoracionUsuario') || '0');
+    this.valoracionUsuario = this.getCookie('valoracionUsuario') ;
   }
 
   private getCookie(name: string): string | null {
@@ -94,10 +100,17 @@ export class EventosComponent implements OnInit {
   }
 
   abrirModalCrearEvento() {
-    if(this.valoracionUsuario >= 2.000){
+    console.log('Valoración del usuario:', this.valoracionUsuario);
+    if(parseFloat(this.valoracionUsuario) >= 3.999){
       this.mostrarModalCrearEvento = true;
     } else {
-      console.warn('No puedes crear un evento si no tienes una valoración de 2 o superior.');
+      this.errorMessage = '';
+          this.showAlert = true;
+            this.alertText = this.textosEventos['EventCreateError'];
+            this.alertColor = 'red';
+            setTimeout(() => {
+              this.showAlert = false;
+            }, 3000);
     }
   }
 
