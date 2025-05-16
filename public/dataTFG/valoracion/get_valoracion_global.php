@@ -1,10 +1,8 @@
 <?php
-// backend/get_valoracion_global.php
 
-// **Incluir configuración de la base de datos**
 require_once '../db_config.php';
 
-// La conexión PDO ($pdo) ya está disponible desde db_config.php
+
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
