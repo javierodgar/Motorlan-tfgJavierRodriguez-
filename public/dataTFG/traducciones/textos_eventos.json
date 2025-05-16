@@ -1,0 +1,24 @@
+{
+    "es": {
+      "tituloEventos": "Eventos",
+      "buscarEventosPlaceholder": "Buscar eventos...",
+      "crearEventoBoton": "Crear Evento",
+      "verEventosFinalizadosCheckbox": "Ver eventos finalizados",
+      "noEventosDisponibles": "No hay eventos disponibles.",
+      "noEventosEncontrados": "No se encontraron eventos con el criterio de búsqueda \"{{filtro}}\".",
+      "comienzaLabel": "Comienza:",
+      "noMasEventos": "No hay más eventos.",
+      "cargandoMas": "Cargando más eventos..."
+    },
+    "en": {
+      "tituloEventos": "Events",
+      "buscarEventosPlaceholder": "Search events...",
+      "crearEventoBoton": "Create Event",
+      "verEventosFinalizadosCheckbox": "Show finished events",
+      "noEventosDisponibles": "No events available.",
+      "noEventosEncontrados": "No events found with the search criteria \"{{filtro}}\".",
+      "comienzaLabel": "Starts:",
+      "noMasEventos": "No more events.",
+      "cargandoMas": "Loading more events..."
+    }
+  }

@@ -1,0 +1,68 @@
+<h2>{{ textosEditarPost?.['tituloPagina'] }}</h2>
+
+<form [formGroup]="postForm" (ngSubmit)="guardarCambios()" >
+  <div>
+    <label for="titulo">{{ textosEditarPost?.['tituloLabel'] }}</label>
+    <input type="text" id="titulo" formControlName="titulo" class="text" required>
+    <div *ngIf="postForm.controls['titulo'].invalid && (postForm.controls['titulo'].dirty || postForm.controls['titulo'].touched)">
+      <div *ngIf="postForm.controls['titulo'].errors?.['required']">
+        {{ textosEditarPost?.['tituloRequeridoError'] }}
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="imagen">{{ textosEditarPost?.['imagenOpcionalLabel'] }}</label>
+    <input type="file" id="imagen" formControlName="imagen" (change)="onFileChange($event)" class="text">
+    <div *ngIf="post?.imagen && !selectedFile">
+      <img [src]="post.imagen" alt="Imagen actual" style="max-width: 100%; max-height: 200px;">
+    </div>
+    <div *ngIf="selectedFile">
+    <img [src]="imagePreview" *ngIf="imagePreview" alt="Nueva imagen" style="max-width: 100%; max-height: 200px;">
+  </div>
+  </div>
+
+  <div>
+    <label for="texto">{{ textosEditarPost?.['textoLabel'] }}</label>
+    <textarea id="texto" formControlName="texto" rows="5" class="text" style="min-height: 100px; width: 100%; " required></textarea>
+    <div *ngIf="postForm.controls['texto'].invalid && (postForm.controls['texto'].dirty || postForm.controls['texto'].touched)">
+      <div *ngIf="postForm.controls['texto'].errors?.['required']">
+        {{ textosEditarPost?.['textoRequeridoError'] }}
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="hashtagsInput">{{ textosEditarPost?.['anadirHashtagsLabel'] }}</label>
+    <input type="text" id="hashtagsInput" #hashtagInput class="text" (keyup.enter)="$event.preventDefault(); addHashtagFromInput()">
+  </div>
+
+  <div *ngIf="selectedHashtags.length > 0" class="selected-hashtags-container">
+    <label class="selected-hashtags-label" style="width: 100%;  overflow-wrap: anywhere; white-space: normal; word-break: break-word;">{{ textosEditarPost?.['hashtagsSeleccionadosLabel'] }}</label>
+    <div *ngFor="let hashtag of selectedHashtags; let last = last">
+      <div class="hashtag-item-container">
+        <span class="hashtag-text">{{ hashtag }}</span>
+        <button type="button" (click)="removeSelectedHashtag(hashtag)" class="remove-hashtag-button">
+          {{ textosEditarPost?.['eliminarBoton'] }}
+        </button>
+      </div>
+      <hr *ngIf="!last" class="hashtag-separator-hr">
+    </div>
+  </div>
+
+  <button type="button" (click)="guardarCambios()" class="btn-guardar" [disabled]="postForm.invalid">{{ textosEditarPost?.['guardarCambiosBoton'] }}</button>
+</form>
+
+<div *ngIf="!post">
+  {{ textosEditarPost?.['cargandoPublicacion'] }}
+</div>
+<div *ngIf="postId === null">
+  {{ textosEditarPost?.['idPublicacionInvalido'] }}
+</div>
+
+<app-alert
+    *ngIf="showAlert"
+    [text]="alertText"
+    [backgroundColor]="alertColor"
+    >
+    </app-alert>

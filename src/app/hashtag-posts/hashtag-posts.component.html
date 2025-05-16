@@ -1,0 +1,43 @@
+
+
+<div class="container">
+    <h1>{{ textosHashtagPosts?.['tituloPagina']}} #{{ hashtag }}</h1>
+
+    
+    <div class="post-list">
+      <div *ngIf="loading" class="alert alert-info" role="alert">
+        {{ textosHashtagPosts?.['cargandoPublicaciones'] }}
+      </div>
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        {{ textosHashtagPosts?.['errorCargaPublicaciones'] }}
+      </div>
+      <div *ngIf="posts.length === 0 && !loading && !error" class="alert alert-warning" role="alert">
+        {{ textosHashtagPosts?.['noPublicacionesEncontradas'] }}
+      </div>
+  
+      <div *ngIf="posts.length > 0 && !loading && !error">
+        <div class="post" *ngFor="let post of posts; trackBy: trackById" (click)="onpostClick(post.id)">
+          <h2>{{ post.titulo }}</h2>
+          <div class="post-image-container" *ngIf="post.imagen">
+            <img [src]=" post.imagen" alt="{{ post.titulo }}">
+          </div>
+          <p>{{ post.texto }}</p>
+          <p class="text-muted">
+            {{ textosHashtagPosts?.['publicadoPor'] }} {{ post.usuario }}<br>
+            {{ textosHashtagPosts?.['fecha'] }} {{ post.fecha_creacion | date:'dd/MM/yyyy HH:mm' }}
+          </p>
+          <p class="hashtags" *ngIf="post.hashtags && post.hashtags.length > 0">
+            <span *ngFor="let tag of post.hashtags; let last = last" class="hashtag">
+              <a>{{ tag }}</a>{{ !last ? ', ' : '' }}
+            </span>
+          </p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <small class="text-muted">{{ textosHashtagPosts?.['likes'] }} {{ post.total_likes || 0 }}</small> |
+              <small class="text-muted">{{ textosHashtagPosts?.['dislikes'] }} {{ post.total_dislikes || 0 }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

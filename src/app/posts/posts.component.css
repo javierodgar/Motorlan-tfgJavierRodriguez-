@@ -1,0 +1,298 @@
+
+
+.post {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .post h2 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .post p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .post-image-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 0; 
+    margin-bottom: 10px; 
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .post img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 5px;
+    display: block; 
+    margin: 0 auto; 
+  }
+
+  .post .hashtags {
+    font-size: 12px;
+    color: #888;
+  }
+
+  .filter-container {
+    display: flex;
+    flex-direction: column; 
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    height: 15%;
+  }
+
+  .filter-container h2 {
+    text-align: center; 
+    margin-bottom: 15px;
+  }
+
+  .search-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+  }
+
+  
+
+  .filter-container .modal-trigger {
+    width: 30px;
+    height: 30px;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .filter-container .modal-trigger:hover {
+    background-color: #0056b3;
+  }
+
+  .filter-select-container {
+    display: flex;
+    align-items: center; 
+  }
+
+  .filter-select-container label {
+    margin-right: 10px;
+    font-size: 14px; 
+  }
+
+  .filter-select-container select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .like-button,
+.dislike-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: .6;
+  cursor: pointer;
+  user-select: none;
+  border: 0px solid var(--middle-grey, #000000);
+  border-radius: var(--border-radius-icon, 50px); 
+  transition: .2s ease all;
+  padding: 0; 
+  background: transparent; 
+}
+
+.like-button:hover,
+.dislike-button:hover {
+  opacity: .9;
+  box-shadow: var(--shadow, 0 5px 15px 0 #00000026); 
+}
+
+.like-button:active,
+.dislike-button:active {
+  opacity: .9;
+  box-shadow: var(--shadow-active, 0 5px 5px 0 #00000026); 
+}
+
+.like-label,
+.dislike-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.like-count {
+  border-right: 0.1rem solid var(--dark-grey, #000000);
+  padding: 0 0.6rem 0 0.5rem;
+  pointer-events: none;
+  color: var(--dark-grey, #000000); 
+}
+
+.dislike-count {
+  border-left: 0.1rem solid var(--dark-grey, #000000); 
+  padding: 0 0.5rem 0 0.6rem;
+  pointer-events: none;
+  color: var(--dark-grey, #000000); 
+}
+
+.like-icon,
+.dislike-icon {
+  width: 1.3rem;
+  fill: #000000;
+  box-sizing: content-box;
+  padding: 10px 10px;
+  transition: .2s ease all;
+}
+
+.dislike-icon {
+  transform: rotate(180deg);
+}
+
+.like-checkbox,
+.dislike-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.like-button .like-icon-regular {
+  display: block;
+}
+
+.like-button .like-icon-solid {
+  display: none;
+}
+
+.dislike-button .dislike-icon-regular {
+  display: block;
+}
+
+.dislike-button .dislike-icon-solid {
+  display: none;
+}
+
+.like-button:hover .like-icon {
+  animation: rotate-icon-like 0.7s ease-in-out both;
+}
+
+.dislike-button:hover .dislike-icon {
+  animation: rotate-icon-dislike 0.7s ease-in-out both;
+}
+
+.like-checkbox:checked + .like-label .like-icon-regular {
+  display: none;
+  animation: checked-icon-like 0.5s;
+}
+
+.like-checkbox:checked + .like-label .like-icon-solid {
+  display: block;
+  animation: checked-icon-like 0.5s;
+}
+
+.dislike-checkbox:checked + .dislike-label .dislike-icon-regular {
+  display: none;
+  animation: checked-icon-dislike 0.5s;
+}
+
+.dislike-checkbox:checked + .dislike-label .dislike-icon-solid {
+  display: block;
+  animation: checked-icon-dislike 0.5s;
+}
+
+.icon-button-container {
+  display: flex; 
+}
+
+.postContainer{
+  overflow-y: scroll; 
+  height: 85%;
+}
+
+  @media (max-width: 900px) {
+    .filter-container {
+      height: 18%;
+    }
+
+    .postContainer{
+      overflow-y: scroll; 
+      height: 82%;
+    }
+
+    .post img {
+      max-width: 275px;
+    }
+
+    .search-row {
+      flex-direction: column; 
+      align-items: stretch; 
+    }
+
+    .filter-container input[type="text"] {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
+    .filter-select-container {
+      width: 100%;
+    }
+  }
+
+  .text{
+    resize: none;
+     width: 70%;
+     margin-right: 5px;
+     height: 3em;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     padding: 10px;
+     border-radius: 8px;
+     position: relative;
+     background-color: #fff; 
+     color: #333; 
+     border: 1px solid #ccc; 
+     outline: none;
+     font-size: 16px;
+     line-height: 1.4;
+     box-sizing: border-box;
+     transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+ }
+
+  .text:hover {
+    border-color: #999; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .text:focus {
+    border-color: #ffdddd; 
+    box-shadow: 0 0 7px #ffdddd; 
+  }
+
+  @media (max-width: 750px) {
+    .post img {
+      max-width: 250px;
+    }
+  }

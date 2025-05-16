@@ -1,0 +1,40 @@
+{
+    "es": {
+      "tituloPagina": "Editar Publicación",
+      "tituloLabel": "Título:",
+      "tituloRequeridoError": "El título es requerido.",
+      "imagenOpcionalLabel": "Imagen (opcional):",
+      "imagenActualLabel": "Imagen actual",
+      "nuevaImagenSeleccionadaLabel": "Nueva imagen seleccionada",
+      "textoLabel": "Texto:",
+      "textoRequeridoError": "El texto es requerido.",
+      "anadirHashtagsLabel": "Añadir Hashtags:",
+      "hashtagsSeleccionadosLabel": "Hashtags Seleccionados:",
+      "eliminarBoton": "Eliminar",
+      "guardarCambiosBoton": "Guardar Cambios",
+      "cargandoPublicacion": "Cargando publicación...",
+      "idPublicacionInvalido": "ID de publicación no válido.",
+      "errorActualizarPost": "Error al actualizar el post.",
+      "postActualizadoExito": "Post actualizado con éxito!",
+      "contenidoOfensivo": "El título o el texto de la publicación contiene palabras ofensivas. Por favor, revísalo."
+    },
+    "en": {
+      "tituloPagina": "Edit Post",
+      "tituloLabel": "Title:",
+      "tituloRequeridoError": "Title is required.",
+      "imagenOpcionalLabel": "Image (optional):",
+      "imagenActualLabel": "Current image",
+      "nuevaImagenSeleccionadaLabel": "New image selected",
+      "textoLabel": "Text:",
+      "textoRequeridoError": "Text is required.",
+      "anadirHashtagsLabel": "Add Hashtags:",
+      "hashtagsSeleccionadosLabel": "Selected Hashtags:",
+      "eliminarBoton": "Delete",
+      "guardarCambiosBoton": "Save Changes",
+      "cargandoPublicacion": "Loading post...",
+      "idPublicacionInvalido": "Invalid post ID.",
+      "errorActualizarPost": "Error updating the post.",
+      "postActualizadoExito": "Post updated successfully!",
+      "contenidoOfensivo": "The title or text of the post contains offensive words. Please review it."
+    }
+  }

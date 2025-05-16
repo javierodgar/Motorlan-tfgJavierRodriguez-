@@ -1,0 +1,13 @@
+
+<div class="eventos-inscritos-pendientes-container">
+  <h3>{{ textosEventosFinalizados?.['tituloComponente'] }}</h3>
+  <div *ngIf="eventosInscritos.length > 0; else noEventos" class="eventos-grid">
+    <div *ngFor="let evento of eventosInscritos" class="evento-card" (click)="mostrarMensaje(evento.id)">
+      <h4 class="evento-titulo" style="width: 100%;  overflow-wrap: anywhere; white-space: normal; word-break: break-word;">{{ evento.titulo }}</h4>
+      <span class="evento-fecha-inicio">{{ textosEventosFinalizados?.['comienzaLabel'] }} {{ evento.fecha_inicio | date: 'dd/MM/yyyy HH:mm' }}</span>
+    </div>
+  </div>
+  <ng-template #noEventos>
+    <p>{{ textosEventosFinalizados?.['noEventosFinalizados'] }}</p>
+  </ng-template>
+</div>

@@ -1,0 +1,77 @@
+
+  
+  <div class="profile-container" style="height: 100%;">
+    <div class="header">
+      <div class="profile-info" *ngIf="userData">
+        <img *ngIf="profileImage" [src]="profileImage" alt="Imagen de perfil" class="profile-image" />
+        <div class="user-details">
+          <h2>{{ userData?.usuario }}</h2>
+          <p class="post-count">{{ textosPerfilUsuario?.['publicacionesLabel'] || 'Publicaciones' }}: {{ posts.length }}</p>
+          <div class="follow-stats">
+            <p><strong>{{ followersCount }}</strong> {{ textosPerfilUsuario?.['seguidoresLabel'] || 'Seguidores' }}</p>
+            <p><strong>{{ followingCount }}</strong> {{ textosPerfilUsuario?.['siguiendoLabel'] || 'Siguiendo' }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+      </div>
+    </div>
+  
+    <div class="bio">
+      <p *ngIf="userData?.nombre"><strong>{{ textosPerfilUsuario?.['nombreLabel'] || 'Nombre' }}:</strong> {{ userData.nombre }}</p>
+      <p *ngIf="userData?.apellido1"><strong>{{ textosPerfilUsuario?.['apellido1Label'] || 'Apellido 1' }}:</strong> {{ userData.apellido1 }}</p>
+      <p *ngIf="userData?.apellido2"><strong>{{ textosPerfilUsuario?.['apellido2Label'] || 'Apellido 2' }}:</strong> {{ userData.apellido2 || textosPerfilUsuario?.['noEspecificado'] || 'No especificado' }}</p>
+      <p *ngIf="userData?.correo_electronico"><strong>{{ textosPerfilUsuario?.['emailLabel'] || 'Email' }}:</strong> {{ userData.correo_electronico }}</p>
+      <p *ngIf="userData?.ciudad_residencia"><strong>{{ textosPerfilUsuario?.['ciudadLabel'] || 'Ciudad' }}:</strong> {{ userData.ciudad_residencia }}</p>
+      <div class="valoracion-container" *ngIf="valoracionGlobal !== null">
+        <strong>{{ textosPerfilUsuario?.['valoracionLabel'] || 'Valoración' }}:</strong> {{ valoracionGlobal.toFixed(3) }}
+        <img [src]="rutaImagenEstrella" alt="{{ textosPerfilUsuario?.['valoracionUsuarioAlt'] || 'Valoración del usuario' }}">
+      </div>
+    </div>
+  
+    <div class="follow-actions" *ngIf="getCurrentLoggedInUsername() !== username">
+      <button (click)="toggleFollow()">{{ isFollowing ? (textosPerfilUsuario?.['dejarDeSeguirBoton'] || 'Dejar de seguir') : (textosPerfilUsuario?.['seguirBoton'] || 'Seguir') }}</button>
+      <button (click)="bloqueoFunction(userData.usuario)">
+        {{ isBlocked ? (textosPerfilUsuario?.['desbloquearBoton'] || 'Desbloquear') : (textosPerfilUsuario?.['bloquearBoton'] || 'Bloquear') }}
+      </button>
+      <button (click)="marcarUsuario('bueno')">{{ textosPerfilUsuario?.['marcarBuenUsuarioBoton'] || 'Marcar como buen usuario' }}</button>
+      <button (click)="marcarUsuario('malo')">{{ textosPerfilUsuario?.['marcarMalUsuarioBoton'] || 'Marcar como mal usuario' }}</button>
+    </div>
+  
+    <div class="tab-navigation">
+      <button [class.active]="showPosts" (click)="toggleView('posts')">{{ textosPerfilUsuario?.['publicacionesTab'] || 'Publicaciones' }}</button>
+      <button [class.active]="!showPosts" (click)="toggleView('events')">{{ textosPerfilUsuario?.['eventosTab'] || 'Eventos' }}</button>
+    </div>
+  
+    <div class="content" style="height: 50%; overflow: auto;">
+      <div *ngIf="showPosts">
+        <app-user-posts-general
+          [posts]="posts"
+          [dataUrl]="dataUrl"
+          (viewPost)="handleViewPost($event)"
+        ></app-user-posts-general>
+      </div>
+  
+      <div *ngIf="!showPosts">
+        <app-user-events-general
+          [events]="events"
+          [dataUrl]="dataUrl"
+          (viewEvent)="handleViewEvent($event)"
+        ></app-user-events-general>
+      </div>
+    </div>
+  
+    <div *ngIf="!userData">
+      <div class="no-user">
+        <p>{{ textosPerfilUsuario?.['usuarioNoEncontrado'] || 'Usuario no encontrado o error al cargar los datos.' }}</p>
+      </div>
+    </div>
+  
+  </div>
+  
+  <app-alert
+    *ngIf="showAlert"
+    [text]="alertText"
+    [backgroundColor]="alertColor"
+  >
+  </app-alert>

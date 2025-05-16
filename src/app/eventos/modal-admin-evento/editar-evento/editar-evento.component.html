@@ -1,0 +1,54 @@
+
+  <div class="container mt-5">
+    <h2>{{ evento.id ? textosEditarEvento?.['tituloEditar'] : textosEditarEvento?.['tituloCrear'] }}</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="titulo" class="form-label">{{ textosEditarEvento?.['tituloLabel'] }}</label>
+        <input type="text" class="form-control text" style="width: 100%;" id="titulo" name="titulo" [(ngModel)]="evento.titulo" required [disabled]="estado_id != 1 && estado_id != 4">
+      </div>
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">{{ textosEditarEvento?.['descripcionLabel'] }}</label>
+        <textarea class="form-control text" style="width: 100%;" id="descripcion" name="descripcion" [(ngModel)]="evento.descripcion" [disabled]="estado_id != 1 && estado_id != 4"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="categoria" class="form-label">{{ textosEditarEvento?.['categoriaLabel'] }}</label>
+        <!-- <input type="text" class="form-control text" style="width: 100%;" id="categoria" name="categoria" [(ngModel)]="evento.categoria" required [disabled]="estado_id != 1 && estado_id !=4"> -->
+        <select id="categoria" class="form-control text" name="categoria" [(ngModel)]="evento.categoria" required [disabled]="estado_id != 1 && estado_id !=4" style="width: 100%;">
+          <option value="" disabled>{{ textosEditarEvento?.['seleccionarCategoria'] }}</option>
+          <option value="Motos">{{ textosEditarEvento?.['categoriaOpcionMotos'] }}</option>
+          <option value="Coches">{{ textosEditarEvento?.['categoriaOpcionCoches'] }}</option>
+          <option value="Mixto">{{ textosEditarEvento?.['categoriaOpcionMixto'] }}</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="imagen_portada" class="form-label">{{ textosEditarEvento?.['imagenPortadaLabel'] }}</label>
+        <input type="file" class="form-control text" style="width: 100%;" id="imagen_portada" name="imagen_portada" (change)="onFileSelected($event)" [disabled]="estado_id != 1 && estado_id != 4">
+        <div *ngIf="imagenPrevisualizacion" class="mt-2">
+          <label>{{ textosEditarEvento?.['previsualizacionImagenLabel'] }}</label>
+          <img [src]="imagenPrevisualizacion" alt="Previsualización de la imagen" style="max-width: 95%; max-height: 200px;">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="direccion" class="form-label">{{ textosEditarEvento?.['direccionLabel'] }}</label>
+        <input type="text" class="form-control text" style="width: 100%;" id="direccion" name="direccion" [(ngModel)]="evento.direccion" (input)="onDireccionInput($event)" required [disabled]="estado_id != 1 && estado_id != 4">
+      </div>
+      <div class="mb-3">
+        <label for="fecha_inicio" class="form-label">{{ textosEditarEvento?.['fechaInicioLabel'] }}</label>
+        <input type="datetime-local" class="form-control text" style="width: 100%;" id="fecha_inicio" name="fecha_inicio" [(ngModel)]="evento.fecha_inicio" required [disabled]="estado_id != 1 && estado_id != 4">
+      </div>
+      <div class="mb-3">
+        <label for="fecha_fin" class="form-label">{{ textosEditarEvento?.['fechaFinLabel'] }}</label>
+        <input type="datetime-local" class="form-control text" style="width: 100%;" id="fecha_fin" name="fecha_fin" [(ngModel)]="evento.fecha_fin" required [disabled]="estado_id != 1 && estado_id != 4">
+      </div>
+  
+      <div class="mb-3" style="height: 300px;" #mapaCrear>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; ">
+        <button type="button" class=" btn-red ms-2" (click)="onCancelar()" [disabled]="estado_id != 1 && estado_id != 4">{{ textosEditarEvento?.['cancelarBoton'] }}</button>
+  
+        <button type="submit" class=" btn-green" [disabled]="estado_id != 1 && estado_id != 4">{{ evento.id ? textosEditarEvento?.['guardarCambiosBoton'] : textosEditarEvento?.['crearEventoBoton'] }}</button>
+      </div>
+  
+    </form>
+  </div>

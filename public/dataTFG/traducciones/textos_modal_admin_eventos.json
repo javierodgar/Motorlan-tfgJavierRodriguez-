@@ -1,0 +1,42 @@
+{
+    "es": {
+      "edicionTab": "Edición",
+      "suscritosTab": "Gente Suscrita",
+      "estadosTab": "Estados",
+      "tituloEdicion": "Edición del Evento",
+      "tituloEstados": "Estados Evento",
+      "tituloEliminarEvento": "Eliminar Evento",
+      "botonEliminarEvento": "Eliminar",
+      "tituloCancelarEvento": "Cancelar Evento",
+      "eventoFinalizadoTitulo": "El evento ya ha finalizado",
+      "eventoFinalizadoParrafo": "No es posible modificar su estado manualmente",
+      "eventoIniciadoTitulo": "El evento ya ha comenzado",
+      "eventoIniciadoParrafo": "No es posible modificar su estado manualmente",
+      "confirmarEliminarMensaje": "¿Estás seguro de que deseas eliminar este evento? Esta acción no se puede deshacer.",
+      "confirmarEliminarBoton": "Eliminar",
+      "cancelarEliminarBoton": "Cancelar",
+      "cambiarEstadoMensaje": "¿Estás seguro de que deseas cambiar el estado de este evento?",
+      "cambiarEstadoBoton": "Cambiar Estado",
+      "cancelarCambiarEstadoBoton": "Cancelar"
+    },
+    "en": {
+      "edicionTab": "Edit",
+      "suscritosTab": "Subscribed People",
+      "estadosTab": "States",
+      "tituloEdicion": "Event Editing",
+      "tituloEstados": "Event States",
+      "tituloEliminarEvento": "Delete Event",
+      "botonEliminarEvento": "Delete",
+      "tituloCancelarEvento": "Cancel Event",
+      "eventoFinalizadoTitulo": "The event has already ended",
+      "eventoFinalizadoParrafo": "It is not possible to manually modify its status",
+      "eventoIniciadoTitulo": "The event has already started",
+      "eventoIniciadoParrafo": "It is not possible to manually modify its status",
+      "confirmarEliminarMensaje": "Are you sure you want to delete this event? This action cannot be undone.",
+      "confirmarEliminarBoton": "Delete",
+      "cancelarEliminarBoton": "Cancel",
+      "cambiarEstadoMensaje": "Are you sure you want to change the state of this event?",
+      "cambiarEstadoBoton": "Change State",
+      "cancelarCambiarEstadoBoton": "Cancel"
+    }
+  }

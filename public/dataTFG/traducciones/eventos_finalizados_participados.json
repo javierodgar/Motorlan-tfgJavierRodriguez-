@@ -1,0 +1,12 @@
+{
+    "es": {
+      "tituloComponente": "Eventos Inscritos Finalizados",
+      "noEventosFinalizados": "No hay ningun evento finalizado.",
+      "comienzaLabel": "Comienza:"
+    },
+    "en": {
+      "tituloComponente": "Finished Registered Events",
+      "noEventosFinalizados": "There are no finished events.",
+      "comienzaLabel": "Starts:"
+    }
+  }

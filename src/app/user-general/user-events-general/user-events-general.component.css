@@ -1,0 +1,98 @@
+.user-posts {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.user-posts h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.post {
+  position: relative; 
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  min-height: 150px; 
+  z-index: 1; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+}
+
+.post:hover {
+  background-color: #f0f0f0;
+}
+
+.post h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.5em;
+  position: relative;
+  z-index: 5; 
+  text-align: center; 
+  width: 100%;
+}
+
+.post-image-container {
+  display: flex;
+  justify-content: center;
+  
+  padding: 0 0; 
+  margin-bottom: 10px; 
+  border-radius: 5px;
+  overflow: hidden;
+  width: 100%; 
+}
+
+.post img {
+  max-width: 300px; 
+  height: auto;
+  border-radius: 5px;
+  display: block; 
+  margin: 0 auto; 
+}
+
+.post p {
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 5; 
+  text-align: left; 
+  width: 100%; 
+}
+
+.hashtags {
+  color: #00aaff;
+  font-size: 0.9em;
+  text-align: left; 
+  width: 100%; 
+}
+
+.watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-35deg);
+  color: rgba(255, 0, 0, 0.7); 
+  font-size: 2rem; 
+  font-weight: bold;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 10; 
+  white-space: nowrap;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+}

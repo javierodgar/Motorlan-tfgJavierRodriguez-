@@ -1,0 +1,189 @@
+<div class="modal" *ngIf="isVisible">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">×</span>
+    <h2>{{ textosModalGestion?.['editarPerfilTitulo'] || 'Editar Perfil' }}</h2>
+
+    <div class="tabs">
+      <button
+        [ngClass]="{'active': activeTab === 'general'}"
+        (click)="setActiveTab('general')"
+      >
+        {{ textosModalGestion?.['generalTab'] || 'General' }}
+      </button>
+      <button
+        [ngClass]="{'active': activeTab === 'security'}"
+        (click)="setActiveTab('security')"
+      >
+        {{ textosModalGestion?.['seguridadTab'] || 'Seguridad' }}
+      </button>
+      <button
+        [ngClass]="{'active': activeTab === 'progress'}"
+        (click)="setActiveTab('progress')"
+      >
+        {{ textosModalGestion?.['progresoTab'] || 'Progreso' }}
+      </button>
+    </div>
+
+    <div *ngIf="activeTab === 'general'">
+      <form [formGroup]="generalForm" (ngSubmit)="submitGeneralForm()">
+        <label for="editNombre">{{ textosModalGestion?.['nombreLabel'] || 'Nombre' }}:</label>
+        <input type="text" id="editNombre" formControlName="nombre" required  class="text"/>
+        <div *ngIf="generalForm.get('nombre')?.errors?.['required'] && generalForm.get('nombre')?.touched" class="error ">
+          {{ textosModalGestion?.['nombreObligatorio'] || 'El nombre es obligatorio.' }}
+        </div>
+
+        <label for="editApellido1">{{ textosModalGestion?.['apellido1Label'] || 'Apellido 1' }}:</label>
+        <input type="text" id="editApellido1" formControlName="apellido1" required class="text" />
+        <div *ngIf="generalForm.get('apellido1')?.errors?.['required'] && generalForm.get('apellido1')?.touched" class="error ">
+          {{ textosModalGestion?.['apellido1Obligatorio'] || 'El primer apellido es obligatorio.' }}
+        </div>
+
+        <label for="editApellido2">{{ textosModalGestion?.['apellido2Label'] || 'Apellido 2' }}:</label>
+        <input type="text" id="editApellido2" formControlName="apellido2" class="text" />
+
+        <label for="editEmail">{{ textosModalGestion?.['emailLabel'] || 'Email' }}:</label>
+        <input type="email" id="editEmail" formControlName="correo_electronico" required class="text" />
+        <div *ngIf="generalForm.get('correo_electronico')?.errors?.['required'] && generalForm.get('correo_electronico')?.touched" class="error ">
+          {{ textosModalGestion?.['emailObligatorio'] || 'El email es obligatorio.' }}
+        </div>
+        <div *ngIf="generalForm.get('correo_electronico')?.errors?.['email'] && generalForm.get('correo_electronico')?.touched" class="error ">
+          {{ textosModalGestion?.['emailValido'] || 'Ingresa un email válido.' }}
+        </div>
+
+        <label for="editCiudad">{{ textosModalGestion?.['ciudadLabel'] || 'Ciudad' }}:</label>
+        <input type="text" id="editCiudad" formControlName="ciudad_residencia" required class="text" />
+        <div *ngIf="generalForm.get('ciudad_residencia')?.errors?.['required'] && generalForm.get('ciudad_residencia')?.touched" class="error ">
+          {{ textosModalGestion?.['ciudadObligatoria'] || 'La ciudad es obligatoria.' }}
+        </div>
+
+        <label for="editProfileImage">{{ textosModalGestion?.['imagenPerfilOpcional'] || 'Imagen de perfil (opcional)' }}:</label>
+        <input type="file" id="editProfileImage" (change)="onFileChange($event)" accept="image/*" class="text"/>
+        <div *ngIf="imagenPerfilPrevisualizacion" class="mt-2" style="display: flex; flex-direction: column; align-items: left; margin-bottom: 5px;">
+          <label>{{ textosModalGestion?.['previsualizacionImagenLabel'] || 'Previsualización de la imagen:' }}</label>
+          <div style="display: flex; justify-content: center;">
+            <img [src]="imagenPerfilPrevisualizacion" alt="Previsualización de la imagen de perfil" style="height: 128px; aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover;">
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="!generalForm.valid">{{ textosModalGestion?.['guardarCambiosBoton'] || 'Guardar cambios' }}</button>
+      </form>
+    </div>
+
+    <div *ngIf="activeTab === 'security'">
+      @if(usernameChangeLog['recentChange']){
+        <p>{{ textosModalGestion?.['usuarioCambiadoRecientemente'] || 'Has cambiado tu usuario recientemente, no puedes cambiarlo hasta (aquí ponemos la fecha) pero puedes recuperar el anterior' }}</p>
+        <button (click)="revertMyUsername()">{{ textosModalGestion?.['recuperarBoton'] || 'Recuperar' }}</button>
+      } @else {
+        <h4>{{ textosModalGestion?.['cambiarUsuarioTitulo'] || 'Cambiar Nombre de Usuario' }}</h4>
+      <form [formGroup]="usernameForm" (ngSubmit)="submitUsernameForm()">
+        <label for="usuarioNuevo">{{ textosModalGestion?.['nuevoUsuarioLabel'] || 'Nuevo Nombre de Usuario' }}:</label>
+        <input type="text" id="usuarioNuevo" formControlName="usuarioNuevo" required  class="text">
+        <div *ngIf="usernameForm.get('usuarioNuevo')?.errors?.['required'] && usernameForm.get('usuarioNuevo')?.touched" class="error">
+          {{ textosModalGestion?.['nuevoUsuarioObligatorio'] || 'El nuevo nombre de usuario es requerido.' }}
+        </div>
+        <button type="submit" [disabled]="!usernameForm.valid">{{ textosModalGestion?.['cambiarUsuarioBoton'] || 'Cambiar Usuario' }}</button>
+      </form>
+      }
+
+
+      <h4 style="margin-top: 20px;">{{ textosModalGestion?.['cambiarContrasenaTitulo'] || 'Cambiar Contraseña' }}</h4>
+  <form [formGroup]="passwordForm" (ngSubmit)="submitPasswordForm()">
+    <label for="newPassword">{{ textosModalGestion?.['nuevaContrasenaLabel'] || 'Nueva Contraseña' }}:</label>
+    <input type="password" id="newPassword" formControlName="newPassword"  class="text">
+    <div *ngIf="passwordForm.get('newPassword')?.value !== '' && !isPasswordValid(passwordForm.get('newPassword')?.value || '')">
+      {{ textosModalGestion?.['contrasenaValidacion'] || 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.' }}
+    </div>
+    <div *ngIf="passwordForm.get('newPassword')?.errors?.['minlength'] && passwordForm.get('newPassword')?.touched && passwordForm.get('newPassword')?.value === ''">
+      {{ textosModalGestion?.['contrasenaMinimo'] || 'La contraseña debe tener al menos 6 caracteres.' }}
+    </div>
+
+    <label for="confirmNewPassword">{{ textosModalGestion?.['confirmarContrasenaLabel'] || 'Confirmar Nueva Contraseña' }}:</label>
+    <input type="password" id="confirmNewPassword" formControlName="confirmNewPassword"  class="text" style="margin-bottom: 5px;">
+
+
+    <button type="submit" [disabled]="passwordForm.invalid || (passwordForm.get('newPassword')?.value !== '' && !isPasswordValid(passwordForm.get('newPassword')?.value || ''))">{{ textosModalGestion?.['cambiarContrasenaBoton'] || 'Cambiar Contraseña' }}</button>
+  </form>
+    </div>
+
+    <div *ngIf="activeTab === 'progress'">
+    <div class="tabs">
+      <button
+        [ngClass]="{'active': subActiveTab === 'siguiendo'}"
+        (click)="subActiveTab = 'siguiendo'"
+      >
+        {{ textosModalGestion?.['seguidosTab'] || 'Seguidos' }}
+      </button>
+      <button
+        [ngClass]="{'active': subActiveTab === 'bloqueados'}"
+        (click)="subActiveTab = 'bloqueados'"
+      >
+        {{ textosModalGestion?.['bloqueadosTab'] || 'Bloqueados' }}
+      </button>
+    </div>
+
+    <div class="tab-content" *ngIf="subActiveTab === 'siguiendo'">
+      <p>{{ textosModalGestion?.['listaSeguidosTitulo'] || 'Lista de usuarios seguidos:' }}</p>
+      <table *ngIf="siguiendoUsuarios && siguiendoUsuarios.length > 0">
+        <thead>
+          <tr>
+            <th>{{ textosModalGestion?.['usuarioTabla'] || 'Usuario' }}</th>
+            <th>{{ textosModalGestion?.['fotoPerfilTabla'] || 'Foto de Perfil' }}</th>
+            <th>{{ textosModalGestion?.['accionTabla'] || 'Acción' }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let seguido of siguiendoUsuarios">
+            <td>{{ seguido.usuario }}</td>
+            <td>
+              <img
+                [src]="seguido.profile_image"
+                alt="{{ textosModalGestion?.['fotoPerfilAlt'] || 'Foto de perfil de' }} {{ seguido.usuario }}"
+                style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"
+              />
+            </td>
+            <td>
+              <button (click)="dejarDeSeguir(seguido.usuario)">{{ textosModalGestion?.['dejarDeSeguirBotonTabla'] || 'Dejar de seguir' }}</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="!siguiendoUsuarios || siguiendoUsuarios.length === 0">{{ textosModalGestion?.['noSiguiendo'] || 'No estás siguiendo a nadie.' }}</p>
+    </div>
+
+    <div class="tab-content" *ngIf="subActiveTab === 'bloqueados'">
+      <p>{{ textosModalGestion?.['listaBloqueadosTitulo'] || 'Lista de usuarios bloqueados:' }}</p>
+      <table *ngIf="bloqueadosUsuarios && bloqueadosUsuarios.length > 0">
+        <thead>
+          <tr>
+            <th>{{ textosModalGestion?.['usuarioTabla'] || 'Usuario' }}</th>
+            <th>{{ textosModalGestion?.['fotoPerfilTabla'] || 'Foto de Perfil' }}</th>
+            <th>{{ textosModalGestion?.['accionTabla'] || 'Acción' }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bloqueado of bloqueadosUsuarios">
+            <td>{{ bloqueado.usuario }}</td>
+            <td>
+              <img
+                [src]="bloqueado.profile_image"
+                alt="{{ textosModalGestion?.['fotoPerfilAlt'] || 'Foto de perfil de' }} {{ bloqueado.usuario }}"
+                style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;"
+              />
+            </td>
+            <td>
+              <button (click)="desbloquearUsuario(bloqueado.usuario)">{{ textosModalGestion?.['desbloquearBotonTabla'] || 'Desbloquear' }}</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="!bloqueadosUsuarios || bloqueadosUsuarios.length === 0">{{ textosModalGestion?.['noBloqueados'] || 'No tienes a nadie bloqueado.' }}</p>
+    </div>
+  </div>
+</div>
+
+<app-alert
+    *ngIf="showAlert"
+    [text]="alertText"
+    [backgroundColor]="alertColor"
+>
+</app-alert>

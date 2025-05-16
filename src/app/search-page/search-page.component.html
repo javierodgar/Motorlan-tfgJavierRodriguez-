@@ -1,0 +1,88 @@
+
+  
+  <div class="search-page">
+    <div class="search-controls">
+      <div class="filter-dropdown-container" style="width: 30%">
+        <label for="filterToggle">{{ textosBusqueda?.['filtrarPorLabel'] || 'Filtrar por:' }}</label>
+        <div class="filter-dropdown">
+          <input type="checkbox" id="filterToggle" #filterToggleControl>
+          <label for="filterToggle" class="dropdown-label">{{ textosBusqueda?.['seleccionarFiltrosLabel'] || 'Seleccionar filtros' }}</label>
+          <ul class="filter-options-list">
+            <li *ngFor="let option of filterOptions" class="filter-item">
+              <input type="checkbox" id="{{ 'check_' + option.value }}" [ngModel]="option.checked" (ngModelChange)="onFilterChanged(option)">
+              <label for="{{ 'check_' + option.value }}">{{ option.name }}</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="search-bar">
+        <div>
+          <label for="searchTerm">{{ textosBusqueda?.['searchTerm'] || 'Termino de Busqueda' }}:</label>
+        </div>
+        <div style="width: 100%;">
+          <input type="text" id="searchTerm" [placeholder]="textosBusqueda?.['buscarPlaceholder'] || 'Buscar...'" [(ngModel)]="searchTerm" class="search-input">
+          <button (click)="onSearch()">{{ textosBusqueda?.['buscarBoton'] || 'Buscar' }}</button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="sort-selector" *ngIf="shouldShowSortOptions()">
+      <label for="sortBy">{{ textosBusqueda?.['ordenarPublicacionesPorLabel'] || 'Ordenar publicaciones por:' }}</label>
+      <select id="sortBy" (change)="onSortChanged($event)">
+        <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.name }}</option>
+      </select>
+    </div>
+  
+    <div class="search-results" style="height: calc(70vh - 25px); overflow-y: auto;">
+      <div *ngIf="loading">{{ textosBusqueda?.['cargandoResultados'] || 'Cargando resultados...' }}</div>
+      <div *ngIf="error" class="error">{{ error }}</div>
+      <div *ngIf="searchResults.length === 0 && !loading && !error">{{ textosBusqueda?.['noSeEncontraronResultados'] || 'No se encontraron resultados.' }}</div>
+      <div *ngIf="searchResults.length > 0">
+        <h2>{{ textosBusqueda?.['resultadosBusquedaTitulo'] || 'Resultados de la búsqueda:' }}</h2>
+  
+        <div class="hashtag-results-container">
+          <div *ngFor="let result of searchResults" class="hashtag-item-container">
+            <div *ngIf="result.tipo === 'hashtag'" class="hashtag-item" (click)="consoleLog(result.nombre, 'hashtag')">
+              <h3>{{ result.nombre }}</h3>
+              <p>({{ result.conteo }} {{ textosBusqueda?.['publicacionesLabel'] || 'publicaciones' }})</p>
+            </div>
+          </div>
+        </div>
+  
+        <div class="other-results">
+          <div *ngFor="let result of searchResults" class="result-card-container">
+            <div *ngIf="result.tipo === 'publicacion'" class="result-card publicacion-card" (click)="consoleLog(result.id, 'publicacion')">
+              <h3>{{ result.titulo }}</h3>
+              <p class="card-text">{{ result.texto | slice:0:100 }}...</p>
+              <div class="card-meta">
+                <span class="likes"><i class="fas fa-heart"></i> {{ result.likes_count || 0 }}</span>
+                <span class="dislikes"><i class="fas fa-thumbs-down"></i> {{ result.dislikes_count || 0 }}</span>
+              </div>
+            </div>
+          </div>
+          <div *ngFor="let result of searchResults" class="result-card-container">
+            <div *ngIf="result.tipo === 'usuario'" class="result-card usuario-card" (click)="consoleLog(result.nombre_usuario, 'usuario')">
+              <div class="user-info">
+                <div class="profile-pic">
+                  <img *ngIf="result.profile_image" [src]="result.profile_image" alt="Foto de perfil de {{ result.nombre_usuario }}">
+                </div>
+                <h3>{{ result.nombre_usuario }}</h3>
+              </div>
+            </div>
+          </div>
+          <div *ngFor="let result of searchResults" class="result-card-container">
+            <div *ngIf="result.tipo === 'evento'" class="result-card evento-card" (click)="consoleLog(result.id, 'evento')">
+              <h3>{{ result.titulo }}</h3>
+              <p class="card-text"><i class="fas fa-calendar-alt"></i> {{ textosBusqueda?.['inicioLabel'] || 'Inicio' }}: {{ result.fecha_inicio }}</p>
+              <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{ result.direccion }}</p>
+              <p class="card-text">{{ result.descripcion | slice:0:100 }}...</p>
+              <div class="card-meta">
+                <span class="likes"><i class="fas fa-heart"></i> {{ result.likes_count || 0 }}</span>
+                <span class="comments"><i class="fas fa-comment"></i> {{ result.comentarios_count || 0 }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

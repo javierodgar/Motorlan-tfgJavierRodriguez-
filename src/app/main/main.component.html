@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ textosMain?.['tituloPagina'] }}</title>
+  </head>
+<body>
+  <!-- <div style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+    <select [(ngModel)]="idiomaActual" (ngModelChange)="cambiarIdioma($event)" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; cursor: pointer;">
+      <option value="es">Español</option>
+      <option value="en">English</option>
+    </select>
+  </div> -->
+
+  <div style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+     <div class="select">
+      <div
+        class="selected"
+        [attr.data-default]="idiomaActual === 'es' ? 'Es' : 'Eng'"
+        [attr.data-es]="'Es'"
+        [attr.data-en]="'Eng'"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1em"
+          viewBox="0 0 512 512"
+          class="arrow"
+        >
+          <path
+            d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+          ></path>
+        </svg>
+      </div>
+      <div class="options">
+        <div title="es">
+          <input
+            id="es"
+            name="language"
+            type="radio"
+            value="es"
+            [(ngModel)]="idiomaActual"
+            (change)="cambiarIdioma(idiomaActual)"
+            [checked]="idiomaActual === 'es'"
+          />
+          <label class="option" for="es" data-txt="Es"></label>
+        </div>
+        <div title="en">
+          <input
+            id="en"
+            name="language"
+            type="radio"
+            value="en"
+            [(ngModel)]="idiomaActual"
+            (change)="cambiarIdioma(idiomaActual)"
+            [checked]="idiomaActual === 'en'"
+          />
+          <label class="option" for="en" data-txt="Eng"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header header-lat">
+    <h1>{{ textosMain?.['tituloPagina'] }}</h1>
+  </div>
+<div class="sidebar">
+  <div class="profile-pic" id="profilePic" (click)="showUser()" [style.backgroundImage]="'url(' + profileImageUrl + ')'"></div>
+  <div class="nav-icons">
+    <div class="nav-icon" id="createPostBtn" (click)="showPosts()"><img src="dataTFG/icons/libro.png" alt="icono de libro para mostrar todas las publicaciones"></div>
+    <div class="nav-icon" id="showPosts" (click)="openModal()"><img src="dataTFG/icons/publicacion.png" alt="icono de mas para crear una nueva publicacion"></div>
+    <div class="nav-icon" id="buscador" (click)="showSearch()"><img src="dataTFG/icons/lupa.png" alt="icono de acceso al apartado de busqueda general"></div>
+    <div class="nav-icon" id="events" (click)="showEvents()"><img src="dataTFG/icons/evento.png" alt="icono de acceso al apartado de eventos"></div>
+    <div class="nav-icon onlySmall" id="events" (click)="showExtra()"><img src="dataTFG/icons/informacion.png" alt="icono de acceso al apartado de informacion Extra"></div>
+  </div>
+</div>
+
+  <div class="main-content">
+    <div class="header header-top">
+
+      <h1>{{ textosMain?.['tituloPagina'] }}</h1>
+
+    </div>
+
+    <div class="content">
+      <div class="main-section" id="container">
+        <router-outlet/>
+      </div>
+      <div class="side-section">
+        @if (eventosInscritos.length > 0) {
+            <div class="eventos">
+
+
+            </div>
+          }
+                <app-eventos-side
+                [eventosInscritos]="eventosInscritos"
+                
+                >
+                </app-eventos-side>
+                <app-eventos-finalizados-participados-side></app-eventos-finalizados-participados-side>
+
+          <div class="tab-navigation">
+            <button
+                [ngClass]="{'active': activeTab === 'destacadas'}"
+                (click)="setActiveTab('destacadas')"
+            >
+                {{ textosMain?.['destacadasTab'] || 'Destacadas' }}
+            </button>
+            <button
+                [ngClass]="{'active': activeTab === 'events'}"
+                (click)="setActiveTab('events')"
+            >
+                {{ textosMain?.['eventsTab'] || 'Eventos' }}
+            </button>
+          </div>
+
+          <div *ngIf="activeTab === 'destacadas'" class="tab-content-container">
+            <div #scrollContainer class="destacadas-container">
+              <div *ngIf="loading">{{ textosMain?.['cargandoDestacadas'] }}</div>
+              <div *ngIf="error">{{ error }}</div>
+              <div *ngFor="let publicacion of publicacionesDestacadas" class="card" (click)="showPostId(publicacion.id)">
+                <h3>{{ publicacion.titulo }}</h3>
+                <p style="width: 100%;  overflow-wrap: anywhere; white-space: normal; word-break: break-word;">{{ publicacion.texto }}</p>
+              </div>
+              <div *ngIf="publicacionesDestacadas.length === 0 && !loading && !error">
+                {{ textosMain?.['noDestacadas'] }}
+              </div>
+            </div>
+          </div>
+          <div *ngIf="activeTab === 'events'" class="tab-content-container">
+            <div class="destacadas-container">
+              <div *ngIf="loading">{{ textosMain?.['cargandoPopulares'] }}</div>
+              <div *ngIf="error">{{ error }}</div>
+              <div *ngFor="let evento of eventosPopulares" class="card" (click)="showEventoId(evento.evento_id)">
+                <h3>{{ evento.titulo }}</h3>
+                <p>Fecha de Creación: {{ evento.fecha_creacion | date }}</p>
+              </div>
+              <div *ngIf="eventosPopulares.length === 0 && !loading && !error">
+                {{ textosMain?.['noPopulares'] }}
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  </body>
+
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <h2>{{ textosMain?.['crearPublicacionTituloModal'] }}</h2>
+    <span class="close" (click)="closeModal()">{{ textosMain?.['cerrarModal'] }}</span>
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+
+      <label for="titulo">{{ textosMain?.['tituloLabel'] }}</label>
+      <input type="text" id="titulo" formControlName="titulo" [placeholder]="textosMain?.['tituloPlaceholder']" required />
+      <div *ngIf="postForm.get('titulo')?.errors?.['required'] && postForm.get('titulo')?.touched" class="error">
+        {{ textosMain?.['tituloRequeridoError'] }}
+      </div>
+
+      <label for="texto">{{ textosMain?.['textoLabel'] }}</label>
+      <textarea id="texto" formControlName="texto" [placeholder]="textosMain?.['textoPlaceholder']" required></textarea>
+      <div *ngIf="postForm.get('texto')?.errors?.['required'] && postForm.get('texto')?.touched" class="error">
+        {{ textosMain?.['textoRequeridoError'] }}
+      </div>
+
+      <div>
+        <label for="newHashtagInput">{{ textosMain?.['hashtagsLabel'] }}</label>
+        <input
+          type="text"
+          id="newHashtagInput"
+          (keydown.enter)="addHashtagFromInput()"
+          [placeholder]="textosMain?.['hashtagsPlaceholder']"
+          #hashtagInput
+        />
+      </div>
+
+      <div class="selected-hashtags" *ngIf="selectedHashtags.length > 0">
+        <strong>{{ textosMain?.['hashtagsAnadidos'] }}</strong>
+        <span class="hashtag-item" *ngFor="let hashtag of selectedHashtags">
+          {{ hashtag }}
+          <button type="button" (click)="removeSelectedHashtag(hashtag)">x</button>
+        </span>
+      </div>
+
+      <label for="imagen">{{ textosMain?.['imagenOpcionalLabel'] }}</label>
+      <input type="file" id="imagen" (change)="onFileChange($event)" accept="image/*" />
+      <div *ngIf="imagePreview" style="display: flex; flex-direction: column;">
+        <strong>{{ textosMain?.['imagenPreviewLabel'] }}</strong>
+        <img [src]="imagePreview" alt="Vista previa de la imagen" style="max-width: 200px; max-height: 200px;">
+      </div>
+
+      <button type="button" (click)="onSubmit()" [disabled]="!postForm.valid">{{ textosMain?.['guardarBoton'] }}</button>
+    </form>
+  </div>
+</div>
+</html>
+
+<app-alert
+  *ngIf="showAlert"
+  [text]="alertText"
+  [backgroundColor]="alertColor"
+  >
+</app-alert>

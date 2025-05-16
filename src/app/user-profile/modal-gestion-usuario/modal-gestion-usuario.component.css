@@ -1,0 +1,266 @@
+/* Estilos generales del modal */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #eee;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: none;
+  overflow: auto;
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: normal;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close:hover,
+.close:focus {
+  color: #333;
+  text-decoration: none;
+}
+
+h2 {
+  color: #333;
+  text-align: left;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  flex-shrink: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+label {
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+input[type=text],
+input[type=email],
+input[type=file] {
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}
+
+button[type=submit] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+button[type=submit]:hover {
+  background-color: #0056b3;
+}
+
+button[type=submit]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+.tabs button {
+  background-color: transparent;
+  color: #555;
+  padding: 10px 15px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 1em;
+  margin-right: 10px;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.tabs button:hover {
+  color: #dc3545;
+}
+
+.tabs button.active {
+  color: #dc3545;
+  border-bottom: 2px solid #dc3545;
+  font-weight: bold;
+}
+
+.tab-content {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+th {
+  background-color: #f8f8f8;
+  color: #333;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  flex-shrink: 0;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+td button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+td button:hover {
+  background-color: #0056b3;
+}
+
+.text{
+  resize: none;
+   width: 99%;
+   margin-right: 5px;
+   height: 3em;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   padding: 10px;
+   border-radius: 8px;
+   position: relative;
+   background-color: #fff; 
+   color: #333; 
+   border: 1px solid #ccc; 
+   outline: none;
+   font-size: 16px;
+   line-height: 1.4;
+   box-sizing: border-box;
+   transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.text:hover {
+  border-color: #999; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+}
+
+.text:focus {
+  border-color: #ffdddd; 
+  box-shadow: 0 0 7px #ffdddd; 
+}
+
+@media (max-width: 550px) {
+
+  .modal-content > .tabs {
+      display: block; 
+      margin-bottom: 10px;
+      border-bottom: none; 
+  }
+
+  .modal-content > .tabs button {
+      display: block; 
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: left;
+      background-color: #f9f9f9;
+      color: #333;
+      font-weight: normal;
+      border-bottom: none !important; 
+  }
+
+  .modal-content > .tabs button.active {
+      color: #dc3545;
+      border-bottom: 2px solid #dc3545;
+      font-weight: bold;
+  }
+
+  .tab-content {
+      padding: 10px;
+      border: 1px solid #eee;
+      margin-bottom: 10px;
+      border-radius: 4px;
+  }
+
+  .tab-content.active {
+      display: block;
+  }
+}

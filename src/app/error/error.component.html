@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - ¡Te has pasado de velocidad!</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .speed-limit-sign {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            border: 5px solid red;
+            border-radius: 50%;
+            position: relative;
+            margin: 20px auto;
+        }
+
+        .speed-limit-circle {
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 3px solid red;
+        }
+
+        .speed-limit-text {
+            font-size: 48px;
+            color: black;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .home-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .home-link:hover {
+            background-color: #0056b3;
+        }
+
+        .car-container {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;      
+            overflow-x: hidden; 
+            z-index: 0;         
+        }
+
+        .car {
+            position: absolute;
+            bottom: 20px;
+            left: -100px;
+            width: 100px;
+            height: 50px;
+            animation: drive 5s linear forwards;
+        }
+
+        .car-roof {
+            width: 60px;
+            height: 20px;
+            background-color: #333;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .car-body {
+            width: 100px;
+            height: 30px;
+            background-color: #333;
+            position: absolute;
+            top: 30px;
+        }
+
+        .car-wheel {
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px; 
+            border: 2px solid #555; 
+        }
+
+        .car-wheel.front {
+            left: 10px;
+        }
+
+        .car-wheel.back {
+            right: 10px;
+        }
+
+        .car-window {
+            width: 20px;
+            height: 15px;
+            background-color: #87CEEB;
+            position: absolute;
+            top: 15px;
+            left: 40px;
+            border-radius: 2px;
+        }
+
+        .car-headlight {
+            width: 8px;
+            height: 8px;
+            background-color: #FFD700;
+            position: absolute;
+            top: 35px;
+            left: 5px;
+            border-radius: 50%;
+        }
+
+        .car-taillight {
+            width: 8px;
+            height: 8px;
+            background-color: #FF4500;
+            position: absolute;
+            top: 35px;
+            right: 5px;
+            border-radius: 50%;
+        }
+
+
+        .smoke {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(150, 150, 150, 0.7);
+            border-radius: 50%;
+            top: 40px; 
+            left: -10px; 
+            animation: smoke-rise 2s infinite;
+            z-index: 0;
+        }
+
+        .smoke:nth-child(2) {
+            animation-delay: 0.5s;
+            left: -15px;
+        }
+
+        .smoke:nth-child(3) {
+            animation-delay: 1s;
+            left: -20px;
+        }
+
+        @keyframes smoke-rise {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-50px) scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes drive {
+            0% {
+                left: -100px;
+            }
+            100% {
+                left: 102vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="speed-limit-sign">
+            <div class="speed-limit-circle">
+                <div class="speed-limit-text">404</div>
+            </div>
+        </div>
+        <h1>¡Te has pasado de velocidad!</h1>
+        <p>Parece que la página que buscabas ha tomado un desvío inesperado y no se encuentra en esta dirección.</p>
+        <p>¡Pero no te preocupes, podemos ayudarte a volver a la carretera principal!</p>
+        <a href="/" class="home-link">Carretera Principal</a>
+    </div>
+    <div class="car-container">
+        <div class="car">
+            <div class="car-roof"></div>
+            <div class="car-body"></div>
+            <div class="car-wheel front"></div>
+            <div class="car-wheel back"></div>
+            <div class="car-window"></div>
+            <div class="car-headlight"></div>
+            <div class="car-taillight"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+            <div class="smoke"></div>
+        </div>
+    </div>
+</body>
+</html>

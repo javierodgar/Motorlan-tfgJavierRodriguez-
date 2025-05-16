@@ -1,0 +1,236 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+<script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace.js" ></script>
+
+<div class="detalle-publicacion-container" style="height: 100%; overflow-y: auto;">
+  <div class="post-header">
+    <h1 class="detalle-titulo">{{ title }}</h1>
+    @if(esCreador){
+      <!-- <button class="open-modal-button" (click)="openGenericModal()">...</button> -->
+      <button class="button" (click)="openGenericModal()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg" 
+          width="40" 
+          viewBox="0 0 20 20" 
+          height="40" 
+          fill="none" 
+          class="svg-icon">
+          <g stroke-width="1.5" stroke-linecap="round" stroke="#333">
+            <circle r="4.0" cy="10" cx="10"></circle>
+            <path fill-rule="evenodd" 
+              d="m8.39079 2.80235c.53842-1.51424 2.67991-1.51424 3.21831-.00001.3392.95358 1.4284 1.40477 2.3425.97027 1.4514-.68995 2.9657.82427
+               2.2758 2.27575-.4345.91407.0166 2.00334.9702 2.34248 1.5143.53842 1.5143 2.67996 0 3.21836-.9536.3391-1.4047 1.4284-.9702 2.3425.6899
+                1.4514-.8244 2.9656-2.2758 2.2757-.9141-.4345-2.0033.0167-2.3425.9703-.5384 1.5142-2.67989 1.5142-3.21831 
+                0-.33914-.9536-1.4284-1.4048-2.34247-.9703-1.45148.6899-2.96571-.8243-2.27575-2.2757.43449-.9141-.01669-2.0034-.97028-2.3425-1.51422-.5384-1.51422-2.67994.00001-3.21836.95358-.33914 
+                1.40476-1.42841.97027-2.34248-.68996-1.45148.82427-2.9657 2.27575-2.27575.91407.4345 2.00333-.01669 2.34247-.97026z" 
+              clip-rule="evenodd">
+            </path>
+          </g>
+        </svg>
+        <span class="lable"></span>
+      </button>
+    }
+  </div>
+  @if (img) {
+    <img [src]="img" alt="Imagen de la publicación" class="detalle-imagen">
+    
+  }
+  <p style="width: 100%;  overflow-wrap: anywhere; white-space: normal; word-break: break-word;">{{ text }}</p>
+  @if (hastagh) {
+    <div class="detalle-hashtags" style="margin-top: 2em;">
+      @for (tag of hastagh; track $index) {
+        <span>{{ tag }} </span>
+      }
+    </div>
+  }
+
+  <div class="creador-info" (click)="goToPerfil(usuario)">
+    <strong>creado por</strong>
+    <img
+      
+      [src]="profile_image"
+      alt="Foto de perfil"
+      width="30"
+    />
+    {{ usuario }}
+  </div>
+
+  <div>
+    <!-- <button (click)="onLikeButtonClick()">{{ textosPostComents?.['darLikeBoton'] }}</button><p>likes totales{{likes}}</p>
+    <button (click)="onDislikeButtonClick()">{{ textosPostComents?.['darDislikeBoton'] }}</button><p>dislikes totales{{dislikes}}</p> -->
+
+    <div class="icon-button-container">
+  <div class="like-button-container">
+    <button class="like-button" (click)="onLikeButtonClick()">
+      <span class="like-count">{{ likes }}</span>
+      <svg
+        class="like-icon like-icon-solid"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+      >
+        <path
+          d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2H464c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 
+          275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 
+          48-48 48H294.5c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3V320 272 247.1c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 
+          44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192H96c17.7 0 32 14.3 32 32V448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32z"
+        ></path>
+      </svg>
+      <svg
+        class="like-icon like-icon-regular"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+      >
+        <path
+          d="M323.8 34.8c-38.2-10.9-78.1 11.2-89 49.4l-5.7 20c-3.7 13-10.4 
+          25-19.5 35l-51.3 56.4c-8.9 9.8-8.2 25 1.6 33.9s25 8.2 33.9-1.6l51.3-56.4c14.1-15.5 
+          24.4-34 30.1-54.1l5.7-20c3.6-12.7 16.9-20.1 29.7-16.5s20.1 16.9 16.5 29.7l-5.7 20c-5.7 19.9-14.7 38.7-26.6 
+          55.5c-5.2 7.3-5.8 16.9-1.7 24.9s12.3 13 21.3 13L448 224c8.8 0 16 7.2 16 16c0 6.8-4.3 12.7-10.4 15c-7.4 2.8-13 9-14.9 
+          16.7s.1 15.8 5.3 21.7c2.5 2.8 4 6.5 4 10.6c0 7.8-5.6 14.3-13 15.7c-8.2 1.6-15.1 7.3-18 15.1s-1.6 16.7 3.6 23.3c2.1 2.7 
+          3.4 6.1 3.4 9.9c0 6.7-4.2 12.6-10.2 14.9c-11.5 4.5-17.7 16.9-14.4 28.8c.4 1.3 .6 2.8 .6 4.3c0 8.8-7.2 16-16 16H286.5c-12.6 
+          0-25-3.7-35.5-10.7l-61.7-41.1c-11-7.4-25.9-4.4-33.3 6.7s-4.4 25.9 6.7 33.3l61.7 41.1c18.4 12.3 40 18.8 62.1 18.8H384c34.7 0 
+          62.9-27.6 64-62c14.6-11.7 24-29.7 24-50c0-4.5-.5-8.8-1.3-13c15.4-11.7 25.3-30.2 25.3-51c0-6.5-1-12.8-2.8-18.7C504.8 273.7 
+          512 257.7 512 240c0-35.3-28.6-64-64-64l-92.3 0c4.7-10.4 8.7-21.2 11.8-32.2l5.7-20c10.9-38.2-11.2-78.1-49.4-89zM32 192c-17.7 
+          0-32 14.3-32 32V448c0 17.7 14.3 32 32 32H96c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32H32z"
+        ></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="like-button-container">
+    <button class="dislike-button" (click)="onDislikeButtonClick()">
+      <svg
+        class="dislike-icon dislike-icon-solid"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+      >
+        <path
+          d="M313.4 32.9c26 5.2 42.9 30.5 37.7 56.5l-2.3 11.4c-5.3 26.7-15.1 52.1-28.8 75.2H464c26.5 0 48 21.5 48 48c0 18.5-10.5 34.6-25.9 42.6C497 275.4 504 288.9 504 304c0 23.4-16.8 42.9-38.9 47.1c4.4 7.3 6.9 15.8 6.9 24.9c0 21.3-13.9 39.4-33.1 45.6c.7 3.3 1.1 6.8 1.1 10.4c0 26.5-21.5 48-48 48H294.5c-19 0-37.5-5.6-53.3-16.1l-38.5-25.7C176 420.4 160 390.4 160 358.3V320 272 247.1c0-29.2 13.3-56.7 36-75l7.4-5.9c26.5-21.2 44.6-51 51.2-84.2l2.3-11.4c5.2-26 30.5-42.9 56.5-37.7zM32 192H96c17.7 0 32 14.3 32 32V448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V224c0-17.7 14.3-32 32-32z"
+        ></path>
+      </svg>
+      <svg
+        class="dislike-icon dislike-icon-regular"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+      >
+        <path
+          d="M323.8 34.8c-38.2-10.9-78.1 11.2-89 49.4l-5.7 20c-3.7 13-10.4 25-19.5 35l-51.3 56.4c-8.9 9.8-8.2 25 1.6 33.9s25 8.2 33.9-1.6l51.3-56.4c14.1-15.5 24.4-34 30.1-54.1l5.7-20c3.6-12.7 16.9-20.1 29.7-16.5s20.1 16.9 16.5 29.7l-5.7 20c-5.7 19.9-14.7 38.7-26.6 55.5c-5.2 7.3-5.8 16.9-1.7 24.9s12.3 13 21.3 13L448 224c8.8 0 16 7.2 16 16c0 6.8-4.3 12.7-10.4 15c-7.4 2.8-13 9-14.9 16.7s.1 15.8 5.3 21.7c2.5 2.8 4 6.5 4 10.6c0 7.8-5.6 14.3-13 15.7c-8.2 1.6-15.1 7.3-18 15.1s-1.6 16.7 3.6 23.3c2.1 2.7 3.4 6.1 3.4 9.9c0 6.7-4.2 12.6-10.2 14.9c-11.5 4.5-17.7 16.9-14.4 28.8c.4 1.3 .6 2.8 .6 4.3c0 8.8-7.2 16-16 16H286.5c-12.6 0-25-3.7-35.5-10.7l-61.7-41.1c-11-7.4-25.9-4.4-33.3 6.7s-4.4 25.9 6.7 33.3l61.7 41.1c18.4 12.3 40 18.8 62.1 18.8H384c34.7 0 62.9-27.6 64-62c14.6-11.7 24-29.7 24-50c0-4.5-.5-8.8-1.3-13c15.4-11.7 25.3-30.2 25.3-51c0-6.5-1-12.8-2.8-18.7C504.8 273.7 512 257.7 512 240c0-35.3-28.6-64-64-64l-92.3 0c4.7-10.4 8.7-21.2 11.8-32.2l5.7-20c10.9-38.2-11.2-78.1-49.4-89zM32 192c-17.7 0-32 14.3-32 32V448c0 17.7 14.3 32 32 32H96c17.7 0 32-14.3 32-32V224c0-17.7-14.3-32-32-32H32z"
+        ></path>
+      </svg>
+      <span class="dislike-count">{{ dislikes }}</span>
+    </button>
+  </div>
+</div>
+  </div>
+
+  
+    <h2>{{ textosPostComents?.['tituloComentarios'] }}</h2>
+
+  
+    <h3>{{ textosPostComents?.['anadirComentarioTitulo'] }}</h3>
+  <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 2em;">
+    <textarea [(ngModel)]="newCommentText"  [placeholder]="textosPostComents?.['escribirComentarioPlaceholder']" class="coment-text"></textarea>
+    <!-- <button (click)="postComment()">{{ textosPostComents?.['publicarComentarioBoton'] }}</button> -->
+    <button class="animated-button" (click)="postComment()">
+      <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+        ></path>
+      </svg>
+      <span class="text">P O S T</span>
+      <span class="circle"></span>
+      <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+        ></path>
+      </svg>
+    </button>
+    
+  
+  </div>
+
+
+
+
+  @if(coments !== '' && coments.length > 0){
+    @for (comentario of publicacionConComentarios.comentarios; track comentario.comentario_id) {
+        <div class="comentario">
+          @if (comentario.isEditing) {
+            <div style="display: flex; justify-content: space-between;">
+              <div style="display: flex; align-items: center; width: 85%;">
+                <strong style="margin-right: 0.3em;">{{ comentario.nombre_usuario_comentario }}:</strong>
+                <textarea [(ngModel)]="comentario.editedText" placeholder="Editar comentario" class="coment-text" style="resize: none; width: 90%">{{ comentario.comentario_texto }}</textarea>
+              </div>
+            <div style="display:flex; flex-direction:row; gap: 1em;">
+                <button class="button-edit" (click)="saveEditedComment(comentario)">
+                <svg viewBox="0 0 18 16" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                  <path d="M13.707 4.293l-6 6-3-3" />
+                </svg>
+              </button>
+
+              <button class="button-delete" (click)="cancelEdit(comentario)">
+                <svg viewBox="0 0 448 512" class="svgIcon">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
+                    <path d="M2 2l12 12M2 14L14 2" />
+                  </svg>
+                </svg>
+              </button>
+            </div>
+            </div>
+          } @else {
+            <p style="width: 100%;  overflow-wrap: anywhere; white-space: normal; word-break: break-word;"><strong>{{ comentario.nombre_usuario_comentario }}:</strong> {{ comentario.comentario_texto }}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <small>{{ comentario.comentario_fecha_creacion }}</small>
+            @if (comentario.nombre_usuario_comentario === username) {
+              <div style="display:flex; flex-direction:row; gap: 1em;">
+                <button class="button-edit" (click)="startEdit(comentario)">
+                <svg viewBox="0 0 438 502" class="svgIcon">
+                  <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 
+                  10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 
+                  27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 
+                  452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 
+                  67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 
+                  0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z">
+                  </path>
+                </svg>
+              </button>
+
+              <button class="button-delete" (click)="confirmDeleteComment(comentario.comentario_id)">
+                <svg viewBox="0 0 448 512" class="svgIcon">
+                  <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7
+                   0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 
+                   128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                  </path>
+                </svg>
+              </button>
+              </div>
+            }
+            </div>
+          }
+        </div>
+      }
+  }
+  @if(coments == '' || coments.length === 0){
+    <p >{{ textosPostComents?.['noExistenComentarios'] }}</p>
+  }
+
+  <app-modal-admin-post
+    [isVisible]="showGenericModal"
+    (modalClosed)="recargarPost()"
+  >
+  </app-modal-admin-post>
+</div>
+
+<app-alert
+*ngIf="showAlert"
+[text]="alertText"
+[backgroundColor]="alertColor"
+>
+</app-alert>
+
+<app-confirmation
+  *ngIf="showConfirmationDialog"
+  [message]="textosPostComents?.['confirmarBorrarComentario']"
+  [confirmButtonText]="textosPostComents?.['eliminarBotonConfirmacion']"
+  [cancelButtonText]="textosPostComents?.['cancelarBotonConfirmacion']"
+  (confirmed)="onConfirmationResult($event)"
+></app-confirmation>

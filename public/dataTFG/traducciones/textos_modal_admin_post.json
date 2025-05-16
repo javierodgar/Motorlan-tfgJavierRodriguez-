@@ -1,0 +1,30 @@
+{
+    "es": {
+      "editarTab": "editar",
+      "eliminarTab": "eliminar",
+      "cerrarModal": "×",
+      "editarTitulo": "editar",
+      "eliminarTitulo": "eliminar",
+      "confirmarEliminar": "¿Estás seguro de que quieres eliminar esta publicación?",
+      "eliminarPublicacionBoton": "Eliminar Publicación",
+      "publicacionEliminadaExito": "Publicación eliminada:",
+      "errorEliminarPublicacion": "Error al eliminar la publicación:",
+      "confirmarEliminarMensaje": "¿Estás seguro de que deseas eliminar esta publicación? Esta acción no se puede deshacer.",
+      "confirmarEliminarBoton": "Eliminar",
+      "cancelarEliminarBoton": "Cancelar"
+    },
+    "en": {
+      "editarTab": "edit",
+      "eliminarTab": "delete",
+      "cerrarModal": "×",
+      "editarTitulo": "edit",
+      "eliminarTitulo": "delete",
+      "confirmarEliminar": "Are you sure you want to delete this post?",
+      "eliminarPublicacionBoton": "Delete Post",
+      "publicacionEliminadaExito": "Post deleted:",
+      "errorEliminarPublicacion": "Error deleting the post:",
+      "confirmarEliminarMensaje": "Are you sure you want to delete this post? This action cannot be undone.",
+      "confirmarEliminarBoton": "Delete",
+      "cancelarEliminarBoton": "Cancel"
+    }
+  }

@@ -1,0 +1,12 @@
+{
+    "es": {
+      "tituloComponente": "Eventos Inscritos Pendientes",
+      "noEventosPendientes": "No estás inscrito en ningún evento pendiente.",
+      "comienzaLabel": "Comienza:"
+    },
+    "en": {
+      "tituloComponente": "Pending Registered Events",
+      "noEventosPendientes": "You are not registered for any pending events.",
+      "comienzaLabel": "Starts:"
+    }
+  }

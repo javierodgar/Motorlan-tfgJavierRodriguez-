@@ -1,0 +1,41 @@
+
+<h2>{{ textosInscritos?.['tituloLista'] }}</h2>
+<div *ngIf="inscritos.length > 0; else noInscritos" class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>{{ textosInscritos?.['idUsuarioHeader'] }}</th>
+        <th>{{ textosInscritos?.['nombreUsuarioHeader'] }}</th>
+        <th>{{ textosInscritos?.['fechaInscripcionHeader'] }}</th>
+        <th>{{ textosInscritos?.['valoracionUsuarioHeader'] }}</th>
+        <th>{{ textosInscritos?.['accionesHeader'] }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let inscrito of inscritos">
+        <td>{{ inscrito.usuario_dni }}</td>
+        <td>{{ inscrito.username }}</td>
+        <td>{{ inscrito.fecha_inscripcion | date:'medium' }}</td>
+        <td>{{ inscrito.valoracion }}</td>
+        @if (eventoEstado == 1) {
+          <td>
+            <button class="eliminar-button" (click)="eliminarInscrito(inscrito.usuario_id)">{{ textosInscritos?.['eliminarBoton'] }}</button>
+          </td>
+        } @else {
+          <td>
+            <button class="eliminar-button" (click)="bloqueoEliminacion()" >{{ textosInscritos?.['eliminarBoton'] }}</button>
+          </td>
+        }
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noInscritos>
+  <p>{{ textosInscritos?.['noInscritosParrafo'] }}</p>
+</ng-template>
+<app-alert
+    *ngIf="showAlert"
+    [text]="alertText"
+    [backgroundColor]="alertColor"
+>
+</app-alert>

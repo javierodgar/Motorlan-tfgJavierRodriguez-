@@ -1,0 +1,55 @@
+.eventos-inscritos-pendientes-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow-y: auto; 
+    height: 20%;  
+  }
+  
+  .eventos-inscritos-pendientes-container h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-size: 1.4em;
+  }
+  
+  .eventos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+  }
+  
+  .evento-card {
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; 
+  }
+  
+  .evento-card:hover {
+    transform: scale(1.02); 
+  }
+  
+  .evento-card h4 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+  }
+  
+  .evento-card span.evento-fecha-inicio {
+    color: #777;
+    font-size: 0.9em;
+  }
+  
+  .eventos-inscritos-pendientes-container p {
+    color: #777;
+    font-style: italic;
+  }

@@ -1,0 +1,26 @@
+{
+    "es": {
+      "tituloPagina": "Publicaciones con el hashtag:",
+      "cargandoPublicaciones": "Cargando publicaciones...",
+      "errorCargaPublicaciones": "Error al cargar las publicaciones.",
+      "noPublicacionesEncontradas": "No se encontraron publicaciones con este hashtag.",
+      "publicadoPor": "Publicado por:",
+      "fecha": "Fecha:",
+      "etiquetas": "Etiquetas:",
+      "leerMasBoton": "Leer más",
+      "likes": "Likes:",
+      "dislikes": "Dislikes:"
+    },
+    "en": {
+      "tituloPagina": "Posts with the hashtag:",
+      "cargandoPublicaciones": "Loading posts...",
+      "errorCargaPublicaciones": "Error loading posts.",
+      "noPublicacionesEncontradas": "No posts found with this hashtag.",
+      "publicadoPor": "Posted by:",
+      "fecha": "Date:",
+      "etiquetas": "Hashtags:",
+      "leerMasBoton": "Read more",
+      "likes": "Likes:",
+      "dislikes": "Dislikes:"
+    }
+  }

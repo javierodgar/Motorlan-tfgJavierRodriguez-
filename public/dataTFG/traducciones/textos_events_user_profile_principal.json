@@ -1,0 +1,14 @@
+{
+    "es": {
+      "noEventos": "No has creado ningún evento aún.",
+      "portadaEventoAlt": "Portada del evento",
+      "comienzaLabel": "Comienza",
+      "categoriaLabel": "Categoría"
+    },
+    "en": {
+      "noEventos": "You haven't created any events yet.",
+      "portadaEventoAlt": "Event cover",
+      "comienzaLabel": "Starts",
+      "categoriaLabel": "Category"
+    }
+  }

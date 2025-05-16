@@ -1,0 +1,10 @@
+{
+    "es": {
+      "noPublicaciones": "No tienes publicaciones aún.",
+      "imagenPublicacionAlt": "Imagen de publicación"
+    },
+    "en": {
+      "noPublicaciones": "You don't have any posts yet.",
+      "imagenPublicacionAlt": "Post image"
+    }
+  }

@@ -1,0 +1,81 @@
+
+
+<div class="modal-overlay" *ngIf="isVisible">
+
+
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="modal-nav">
+        <button
+          [ngClass]="{'active': activeTab === 'edicion'}"
+          (click)="setActiveTab('edicion')"
+        >
+          {{ textosModalAdmin?.['edicionTab'] }}
+        </button>
+        <button
+          [ngClass]="{'active': activeTab === 'suscritos'}"
+          (click)="setActiveTab('suscritos')"
+        >
+          {{ textosModalAdmin?.['suscritosTab'] }}
+        </button>
+        <button
+          [ngClass]="{'active': activeTab === 'estados'}"
+          (click)="setActiveTab('estados')"
+        >
+          {{ textosModalAdmin?.['estadosTab'] }}
+        </button>
+      </div>
+      <button class="close-button" (click)="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="activeTab === 'edicion'">
+        <app-editar-evento
+        (guardarEvento)="guardarCambios($event)"
+        (cancelarEdicion)="cancelarEdicion()"
+        ></app-editar-evento>
+      </div>
+      <div *ngIf="activeTab === 'suscritos'">
+        <app-listado-inscritos
+        [eventoEstado]="estado"
+        ></app-listado-inscritos>
+      </div>
+      <div *ngIf="activeTab === 'estados'">
+        @if(estado == 1 || estado == 4) {
+          <h3>{{ textosModalAdmin?.['tituloEstados'] }}</h3>
+          <h4>{{ textosModalAdmin?.['tituloEliminarEvento'] }}</h4>
+          <button class="confirm-delete-button" (click)="eliminarEvento()">{{ textosModalAdmin?.['botonEliminarEvento'] }}</button>
+          <h4>{{ textosModalAdmin?.['tituloCancelarEvento'] }}</h4>
+          <button class="confirm-delete-button" (click)="actualizarEstadoPreguta(eventoId, nuevoEstado)">{{cancelarReanudar}}</button>
+        }@else if (estado == 3) {
+          <h3>{{ textosModalAdmin?.['eventoFinalizadoTitulo'] }}</h3>
+          <h5>{{ textosModalAdmin?.['eventoFinalizadoParrafo'] }}</h5>
+        }@else {
+          <h3>{{ textosModalAdmin?.['eventoIniciadoTitulo'] }}</h3>
+          <h5>{{ textosModalAdmin?.['eventoIniciadoParrafo'] }}</h5>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+<app-confirmation
+  *ngIf="showConfirmationDialog"
+  [message]="textosModalAdmin?.['confirmarEliminarMensaje']"
+  [confirmButtonText]="textosModalAdmin?.['confirmarEliminarBoton']"
+  [cancelButtonText]="textosModalAdmin?.['cancelarEliminarBoton']"
+  (confirmed)="onConfirmationResult($event)"
+></app-confirmation>
+
+<app-confirmation
+  *ngIf="showConfirmationDialog2"
+  [message]="textosModalAdmin?.['cambiarEstadoMensaje']"
+  [confirmButtonText]="textosModalAdmin?.['cambiarEstadoBoton']"
+  [cancelButtonText]="textosModalAdmin?.['cancelarCambiarEstadoBoton']"
+  (confirmed)="onConfirmationResult2($event)"
+></app-confirmation>
+
+<app-alert
+*ngIf="showAlert"
+[text]="alertText"
+[backgroundColor]="alertColor"
+>
+</app-alert>

@@ -1,0 +1,156 @@
+.container {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+h1 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.alert {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #85640a;
+  border: 1px solid #ffeeba;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.text-muted {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.hashtag {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.hashtag a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.hashtag a:hover {
+  text-decoration: underline;
+}
+
+.post {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.post h2 {
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center; 
+}
+
+.post p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.post-image-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 0; 
+  margin-bottom: 10px; 
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.post img {
+  max-width: 300px; 
+  height: auto;
+  border-radius: 5px;
+  display: block; 
+  margin: 0 auto; 
+}
+
+.post .hashtags {
+  font-size: 12px;
+  color: #888;
+}
+
+@media (min-width: 768px) {
+  .row {
+      display: block; 
+      margin-right: 0;
+      margin-left: 0;
+  }
+
+  .col {
+      padding-right: 0;
+      padding-left: 0;
+      width: 100%; 
+  }
+
+  .post-list {
+      flex-direction: column; 
+      gap: 20px; 
+  }
+}

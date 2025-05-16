@@ -1,0 +1,62 @@
+
+
+<div class="eventos-container" style="height: 100%;">
+  <div style="background-color: #fff; margin-bottom: 1em; border-radius: 5px; padding: 0.3em;">
+    <div class="eventos-header" style="height: 10%;">
+      <h1>{{ textosEventos?.['tituloEventos'] }}</h1>
+      <div class="eventos-actions">
+        <input type="text" class="text" placeholder="{{ textosEventos?.['buscarEventosPlaceholder'] }}" [(ngModel)]="filtroBusqueda">
+        <button (click)="abrirModalCrearEvento()">{{ textosEventos?.['crearEventoBoton'] }}</button>
+      </div>
+    </div>
+  
+    <div class="eventos-filtros">
+      <label>
+        <input type="checkbox" [(ngModel)]="verEventosFinalizados"> {{ textosEventos?.['verEventosFinalizadosCheckbox'] }}
+      </label>
+    </div>
+  </div>
+
+  @if (!verEventosFinalizados) {
+    <div class="eventos-list" style="max-height: 90%; overflow-y: auto;">
+      <div class="evento-card" *ngFor="let evento of filtrarEventos()" (click)="mostrarIdEvento(evento)">
+        <h3>{{ evento.titulo }}</h3>
+        <div class="evento-image-container" *ngIf="evento.imagen_portada">
+          <img [src]=" evento.imagen_portada" alt="Portada del evento">
+        </div>
+        <p>{{ textosEventos?.['comienzaLabel'] }} {{ evento.fecha_inicio | date:'dd/MM/yyyy HH:mm' }}</p>
+      </div>
+      <div *ngIf="filtrarEventos().length === 0 && filtroBusqueda">
+        <p>{{ textosEventos?.['noEventosEncontrados']}}</p>
+      </div>
+      <div *ngIf="eventos.length === 0 && !filtroBusqueda">
+        <p>{{ textosEventos?.['noEventosDisponibles'] }}</p>
+      </div>
+    </div>
+  } @else {
+    <div class="eventos-list" style="max-height: 70vh; overflow-y: auto;">
+      <div class="evento-card" *ngFor="let evento of filtrarEventosFinalizados()" (click)="mostrarIdEvento(evento)">
+        <h3>{{ evento.titulo }}</h3>
+        <div class="evento-image-container" *ngIf="evento.imagen_portada">
+          <img [src]="evento.imagen_portada" alt="Portada del evento">
+        </div>
+        <p>{{ textosEventos?.['comienzaLabel'] }} {{ evento.fecha_inicio | date:'dd/MM/yyyy HH:mm' }}</p>
+      </div>
+      <div *ngIf="filtrarEventos().length === 0 && filtroBusqueda">
+        <p>{{ textosEventos?.['noEventosEncontrados']}}</p>
+      </div>
+      <div *ngIf="eventos.length === 0 && !filtroBusqueda">
+        <p>{{ textosEventos?.['noEventosDisponibles'] }}</p>
+      </div>
+    </div>
+  }
+
+  
+</div>
+
+<app-crear-eventos
+    [isVisible]="mostrarModalCrearEvento"
+    (modalCerrado)="cerrarModalCrearEvento()"
+    (eventoCreadoExitoso)="onEventoCreadoExitoso()"
+    *ngIf="mostrarModalCrearEvento">
+  </app-crear-eventos>

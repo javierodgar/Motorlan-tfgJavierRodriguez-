@@ -1,0 +1,213 @@
+/* Estilos generales del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  input[type="text"],
+  input[type="file"],
+  textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; 
+  }
+  
+  textarea {
+    min-height: 100px;
+  }
+  
+  .btn-guardar{
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .current-image-container {
+    margin-top: 10px;
+  }
+  
+  .current-image-container img {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin-bottom: 5px;
+  }
+  
+  .current-image-container p {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  #hashtagsInput {
+    margin-bottom: 10px;
+  }
+  
+  .selected-hashtags-container {
+    margin-top: 10px;
+  }
+  
+  .selected-hashtags-container label {
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  
+  .selected-hashtags-container div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .selected-hashtags-container span {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .selected-hashtags-container button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .selected-hashtags-container button:hover {
+    background-color: #c82333;
+  }
+  
+  .loading-message {
+    color: #777;
+    font-style: italic;
+  }
+  
+  .invalid-id-message {
+    color: orange;
+    font-weight: bold;
+  }
+
+  .selected-hashtags-container {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .selected-hashtags-label {
+    display: block;
+    
+    font-weight: bold;
+    
+  }
+  
+  .hashtag-item-container {
+    display: inline-block; 
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+
+    border-radius: 15px;
+  }
+  
+  .hashtag-text {
+    margin-right: 8px;
+    color: #222222;
+  }
+  
+  .remove-hashtag-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.8em;
+  }
+  
+  .remove-hashtag-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .remove-hashtag-button:mouseout {
+    background-color: #f44336;
+  }
+  
+  .hashtag-separator-hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 5px 0;
+    width: 100%; 
+  }
+
+  .text{
+    resize: none;
+     width: 70%;
+     margin-right: 5px;
+     height: 3em;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     padding: 10px;
+     border-radius: 8px;
+     position: relative;
+     background-color: #fff; 
+     color: #333; 
+     border: 1px solid #ccc; 
+     outline: none;
+     font-size: 16px;
+     line-height: 1.4;
+     box-sizing: border-box;
+     transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+ }
+
+  .text:hover {
+    border-color: #999; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .text:focus {
+    border-color: #ffdddd; 
+    box-shadow: 0 0 7px #ffdddd; 
+  }

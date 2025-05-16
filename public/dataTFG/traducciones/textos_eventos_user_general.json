@@ -1,0 +1,16 @@
+{
+    "es": {
+      "noEventosCreados": "No has creado ningún evento aún.",
+      "comienzaLabel": "Comienza",
+      "finalizaLabel": "Finaliza",
+      "categoriaLabel": "Categoría",
+      "direccionLabel": "Dirección"
+    },
+    "en": {
+      "noEventosCreados": "You haven't created any events yet.",
+      "comienzaLabel": "Starts",
+      "finalizaLabel": "Ends",
+      "categoriaLabel": "Category",
+      "direccionLabel": "Address"
+    }
+  }

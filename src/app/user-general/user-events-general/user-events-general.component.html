@@ -1,0 +1,15 @@
+<div *ngIf="events.length === 0">
+  <p>{{ textosUserEvents?.['noEventos'] || 'No has creado ningún evento aún.' }}</p>
+</div>
+<div *ngFor="let event of events" class="post" (click)="goToEvent(event.id)">
+  <div *ngIf="event.estado_id == 3 || event.estado_id == 4" class="watermark">
+    {{ event.nombre }}
+  </div>
+
+  <h3>{{ event.titulo }}</h3>
+  <div class="post-image-container" *ngIf="event.imagen_portada">
+    <img [src]="event.imagen_portada" alt="{{ textosUserEvents?.['portadaEventoAlt'] || 'Portada del evento' }}" />
+  </div>
+  <p><strong>{{ textosUserEvents?.['comienzaLabel'] || 'Comienza' }}:</strong> {{ event.fecha_inicio | date: 'dd/MM/yyyy HH:mm' }}</p>
+  <p><strong>{{ textosUserEvents?.['categoriaLabel'] || 'Categoría' }}:</strong> {{ event.categoria }}</p>
+</div>

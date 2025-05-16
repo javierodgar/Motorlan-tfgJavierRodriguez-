@@ -1,0 +1,50 @@
+<app-eventos-side
+[eventosInscritos]="eventosInscritos"
+
+>
+</app-eventos-side>
+<app-eventos-finalizados-participados-side></app-eventos-finalizados-participados-side>
+
+<hr>
+<div class="tab-navigation">
+            <button
+                [ngClass]="{'active': activeTab === 'destacadas'}"
+                (click)="setActiveTab('destacadas')"
+            >
+                {{ textosMain?.['destacadasTab'] || 'Destacadas' }}
+            </button>
+            <button
+                [ngClass]="{'active': activeTab === 'events'}"
+                (click)="setActiveTab('events')"
+            >
+                {{ textosMain?.['eventsTab'] || 'Eventos' }}
+            </button>
+          </div>
+
+          <div *ngIf="activeTab === 'destacadas'" class="tab-content-container">
+            <div #scrollContainer class="destacadas-container">
+              <div *ngIf="loading">{{ textosMain?.['cargandoDestacadas'] }}</div>
+              <div *ngIf="error">{{ error }}</div>
+              <div *ngFor="let publicacion of publicacionesDestacadas" class="card" (click)="showPostId(publicacion.id)">
+                <h3>{{ publicacion.titulo }}</h3>
+                <p style="width: 100%;  overflow-wrap: anywhere; white-space: normal; word-break: break-word;">{{ publicacion.texto }}</p>
+              </div>
+              <div *ngIf="publicacionesDestacadas.length === 0 && !loading && !error">
+                {{ textosMain?.['noDestacadas'] }}
+              </div>
+            </div>
+          </div>
+          <div *ngIf="activeTab === 'events'" class="tab-content-container">
+            <div class="destacadas-container">
+                <p>hola que hace</p>
+              <div *ngIf="loading">{{ textosMain?.['cargandoPopulares'] }}</div>
+              <div *ngIf="error">{{ error }}</div>
+              <div *ngFor="let evento of eventosPopulares" class="card" (click)="showEventoId(evento.evento_id)">
+                <h3>{{ evento.titulo }}</h3>
+                <p>Fecha de Creación: {{ evento.fecha_creacion | date }}</p>
+              </div>
+              <div *ngIf="eventosPopulares.length === 0 && !loading && !error">
+                {{ textosMain?.['noPopulares'] }}
+              </div>
+            </div>
+          </div>

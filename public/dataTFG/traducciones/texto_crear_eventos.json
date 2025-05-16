@@ -1,0 +1,38 @@
+{
+    "es": {
+      "tituloModal": "Crear Nuevo Evento",
+      "cerrarBoton": "×",
+      "tituloLabel": "Título:",
+      "descripcionLabel": "Descripción:",
+      "categoriaLabel": "Categoría:",
+      "categoriaOpcionMotos": "Motos",
+      "categoriaOpcionCoches": "Coches",
+      "categoriaOpcionMixto": "Mixto",
+      "imagenPortadaLabel": "Imagen de Portada:",
+      "direccionLabel": "Dirección:",
+      "fechaInicioLabel": "Fecha de Inicio:",
+      "fechaFinLabel": "Fecha de Fin:",
+      "ubicacionEventoLabel": "Ubicación del Evento:",
+      "ubicacionEventoParrafo": "Puedes arrastrar el marcador para seleccionar la ubicación.",
+      "guardarEventoBoton": "Guardar Evento",
+      "previsualizacionImagenLabel": "Previsualización de la Imagen:"
+    },
+    "en": {
+      "tituloModal": "Create New Event",
+      "cerrarBoton": "×",
+      "tituloLabel": "Title:",
+      "descripcionLabel": "Description:",
+      "categoriaLabel": "Category:",
+      "categoriaOpcionMotos": "Motorcycles",
+      "categoriaOpcionCoches": "Cars",
+      "categoriaOpcionMixto": "Mixed",
+      "imagenPortadaLabel": "Cover Image:",
+      "direccionLabel": "Address:",
+      "fechaInicioLabel": "Start Date:",
+      "fechaFinLabel": "End Date:",
+      "ubicacionEventoLabel": "Event Location:",
+      "ubicacionEventoParrafo": "You can drag the marker to select the location.",
+      "guardarEventoBoton": "Save Event",
+      "previsualizacionImagenLabel": "Image Preview:"
+    }
+  }

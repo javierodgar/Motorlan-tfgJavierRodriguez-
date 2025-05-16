@@ -1,0 +1,40 @@
+{
+    "es": {
+      "tituloEditar": "Editar Evento",
+      "tituloCrear": "Crear Nuevo Evento",
+      "tituloLabel": "Título",
+      "descripcionLabel": "Descripción",
+      "categoriaLabel": "Categoría",
+      "imagenPortadaLabel": "Imagen de Portada",
+      "imagenActual": "Imagen actual:",
+      "imagenSeleccionada": "Imagen seleccionada:",
+      "direccionLabel": "Dirección",
+      "fechaInicioLabel": "Fecha de Inicio",
+      "fechaFinLabel": "Fecha de Fin",
+      "guardarCambiosBoton": "Guardar Cambios",
+      "crearEventoBoton": "Crear Evento",
+      "cancelarBoton": "Cancelar",
+      "categoriaOpcionMotos": "Motos",
+      "categoriaOpcionCoches": "Coches",
+      "categoriaOpcionMixto": "Mixto"
+    },
+    "en": {
+      "tituloEditar": "Edit Event",
+      "tituloCrear": "Create New Event",
+      "tituloLabel": "Title",
+      "descripcionLabel": "Description",
+      "categoriaLabel": "Category",
+      "imagenPortadaLabel": "Cover Image",
+      "imagenActual": "Current image:",
+      "imagenSeleccionada": "Selected image:",
+      "direccionLabel": "Address",
+      "fechaInicioLabel": "Start Date",
+      "fechaFinLabel": "End Date",
+      "guardarCambiosBoton": "Save Changes",
+      "crearEventoBoton": "Create Event",
+      "cancelarBoton": "Cancel",
+      "categoriaOpcionMotos": "Motorcycles",
+      "categoriaOpcionCoches": "Cars",
+      "categoriaOpcionMixto": "Mixed"
+    }
+  }

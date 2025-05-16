@@ -1,0 +1,157 @@
+
+.eventos-container {
+  padding: 20px;
+  /* background-color: #fff; */
+}
+
+.eventos-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.eventos-actions {
+  width: 100%; 
+  display: flex; 
+  align-items: right;
+  gap: 10px; 
+}
+
+.eventos-actions input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 0;
+  margin-left: 20px; 
+  width: 80%; 
+}
+
+.eventos-actions button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  /* width: auto; */ 
+}
+
+.eventos-actions button:hover {
+  background-color: #0056b3;
+}
+
+.eventos-list {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px; 
+}
+
+.evento-card {
+  background-color: #fff;
+  width: 100%; 
+  min-width: auto; 
+  margin-bottom: 10px; 
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+}
+
+.evento-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.evento-card .evento-image-container {
+  width: 100%;  
+  max-height: 400px; 
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  overflow: hidden; 
+  border-radius: 3px;
+}
+
+.evento-card .evento-image-container img {
+  max-width: 100%; 
+  max-height: 400px; 
+  height: auto; 
+  width: auto; 
+  object-fit: contain; 
+}
+
+.evento-card p {
+  margin-top: 0;
+  font-size: 1em;
+  color: #555;
+}
+
+
+
+.text{
+    resize: none;
+     margin-right: 5px;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     padding: 10px;
+     border-radius: 8px;
+     position: relative;
+     background-color: #fff; 
+     color: #333; 
+     border: 1px solid #ccc; 
+     outline: none;
+     font-size: 16px;
+     line-height: 1.4;
+     box-sizing: border-box;
+     transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+ }
+
+  .text:hover {
+    border-color: #999; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .text:focus {
+    border-color: #ffdddd; 
+    box-shadow: 0 0 7px #ffdddd; 
+  }
+
+  @media (max-width: 600px) {
+   .eventos-header{
+    flex-direction: column;
+   }
+   .text{
+    height: 24px;
+    width: 60% !important;
+   }
+
+   .eventos-actions{
+    flex-direction: column;
+    align-items: center;
+   }
+
+   .eventos-actions input[type="text"]{
+    width: 60% !important;
+    margin-left: 0;
+   }
+
+   .eventos-actions button {
+    font-size: 12px;
+    height: 24px;
+    width: 60% !important;
+    align-content: center;
+    justify-content: center;
+    padding: 5px 5px;
+    
+  /* width: auto; */ 
+    }
+  }
+  

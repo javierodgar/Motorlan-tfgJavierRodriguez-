@@ -1,0 +1,24 @@
+{
+    "es": {
+      "tituloLista": "Lista de Inscritos",
+      "noInscritosParrafo": "No hay usuarios inscritos en este evento.",
+      "idUsuarioHeader": "DNI de Usuario",
+      "nombreUsuarioHeader": "Nombre de Usuario",
+      "fechaInscripcionHeader": "Fecha de Inscripción",
+      "valoracionUsuarioHeader": "Valoracion Del usuario",
+      "accionesHeader": "Acciones",
+      "eliminarBoton": "Eliminar",
+      "bloqueoEliminarMensaje": "No es posible eliminar a un inscrto si el evento esta en proceso o finalizado"
+    },
+    "en": {
+      "tituloLista": "List of Attendees",
+      "noInscritosParrafo": "No users are registered for this event.",
+      "idUsuarioHeader": "User DNI",
+      "nombreUsuarioHeader": "Username",
+      "fechaInscripcionHeader": "Registration Date",
+      "valoracionUsuarioHeader": "User Rating",
+      "accionesHeader": "Actions",
+      "eliminarBoton": "Delete",
+      "bloqueoEliminarMensaje": "It is not possible to remove a registrant if the event is in progress or finished"
+    }
+  }

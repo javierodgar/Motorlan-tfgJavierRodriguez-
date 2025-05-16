@@ -1,0 +1,41 @@
+
+
+<div class="modal-overlay" *ngIf="isVisible" >
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="modal-nav">
+        <button
+          [ngClass]="{'active': activeTab === 'apartado1'}"
+          (click)="setActiveTab('apartado1')"
+        >
+          {{ textosModalAdminPost?.['editarTab'] }}
+        </button>
+        <button
+          [ngClass]="{'active': activeTab === 'apartado2'}"
+          (click)="setActiveTab('apartado2')"
+        >
+          {{ textosModalAdminPost?.['eliminarTab'] }}
+        </button>
+      </div>
+      <button class="close-button" (click)="closeModal()">{{ textosModalAdminPost?.['cerrarModal'] }}</button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="activeTab === 'apartado1'">
+
+        <app-editar-post></app-editar-post>
+      </div>
+      <div *ngIf="activeTab === 'apartado2'">
+        <h2>{{ textosModalAdminPost?.['eliminarTitulo'] }}</h2>
+        <button type="button" class="delete-button" (click)="eliminarPublicacionPregunta()">{{ textosModalAdminPost?.['eliminarPublicacionBoton'] }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-confirmation
+  *ngIf="showConfirmationDialog"
+  [message]="textosModalAdminPost?.['confirmarEliminarMensaje']"
+  [confirmButtonText]="textosModalAdminPost?.['confirmarEliminarBoton']"
+  [cancelButtonText]="textosModalAdminPost?.['cancelarEliminarBoton']"
+  (confirmed)="onConfirmationResult($event)"
+></app-confirmation>

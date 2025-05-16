@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+* {
+    margin: 0;
+    padding: 0;
+    ::-webkit-scrollbar {
+        width: 5px; 
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.3); 
+      border-radius: 3px; 
+    }
+    
+    ::-webkit-scrollbar-track {
+      background-color: white; 
+    }
+}

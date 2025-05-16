@@ -1,0 +1,79 @@
+.tab-navigation {
+    background-color: #f8f8f8;
+    border-right: 1px solid #eee; /* Separador visual entre navegación y contenido */
+    display: flex;
+    flex-direction: row; /* Inicialmente en fila */
+    align-items: stretch;
+    width: 100%; /* Ocupa el 100% del ancho de la barra lateral */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+}
+.tab-navigation button {
+    background: none;
+    /* width: 50%;  Elimina el ancho fijo para que se ajuste al contenido */
+    border: none;
+    padding: 10px 15px;
+    font-size: 17px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid #eee; 
+    text-align: left;
+    flex-grow: 1; 
+    min-width: 50%; 
+}
+
+.tab-navigation button:last-child {
+    border-bottom: none;
+}
+
+ .tab-navigation button:hover {
+    color: #dc3545; 
+    background-color: #eee;
+}
+
+ .tab-navigation button.active {
+    color: #dc3545; 
+    border-bottom: 3px solid #dc3545; 
+    background-color: #e9ecef;
+}
+ .tab-content-container {
+    padding: 15px;
+    background-color: #fff;
+    border-left: 1px solid #eee;
+    height: 40%;
+    overflow-y: auto;
+}
+
+.destacadas-container {
+  display: grid;
+  gap: 15px;
+  overflow-y: auto;
+  padding-right: 5px; 
+  scrollbar-width: none;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card p {
+  margin-bottom: 0;
+  color: #666;
+}

@@ -1,0 +1,60 @@
+<div class="modal" *ngIf="isVisible">
+  
+  <div class="modal-content">
+    <span class="close-button" (click)="cerrar()">{{ textosCrearEvento?.['cerrarBoton'] }}</span>
+    <h3>{{ textosCrearEvento?.['tituloModal'] }}</h3>
+    <form (submit)="submitForm($event)">
+      <div>
+        <label for="titulo">{{ textosCrearEvento?.['tituloLabel'] }}</label>
+        <input type="text" class="text" id="titulo" name="titulo" required>
+      </div>
+      <div>
+        <label for="descripcion">{{ textosCrearEvento?.['descripcionLabel'] }}</label>
+        <textarea id="descripcion" class="text" name="descripcion"></textarea>
+      </div>
+      <div>
+        <label for="categoria">{{ textosCrearEvento?.['categoriaLabel'] }}</label>
+        <select id="categoria" class="text" name="categoria" required>
+          <option value="Mixto">{{ textosCrearEvento?.['categoriaOpcionMixto'] }}</option>
+          <option value="Motos">{{ textosCrearEvento?.['categoriaOpcionMotos'] }}</option>
+          <option value="Coches">{{ textosCrearEvento?.['categoriaOpcionCoches'] }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="imagen_portada">{{ textosCrearEvento?.['imagenPortadaLabel'] }}</label>
+        <input type="file" class="text" id="imagen_portada" name="imagen_portada" (change)="onFileChange($event)">
+          <div *ngIf="imagenPrevisualizacion">
+            <label>{{ textosCrearEvento?.['previsualizacionImagenLabel'] }}</label>
+            <img [src]="imagenPrevisualizacion" alt="Previsualización de la imagen" style="max-width: 95%; max-height: 200px;">
+          </div>
+      </div>
+      <div>
+        <label for="direccion">{{ textosCrearEvento?.['direccionLabel'] }}</label>
+        <input type="text" class="text" id="direccion" name="direccion" required (input)="onDireccionInput($event)" [value]="direccion">
+      </div>
+      <div>
+        <label for="fecha_inicio">{{ textosCrearEvento?.['fechaInicioLabel'] }}</label>
+        <input type="datetime-local" class="text" id="fecha_inicio" name="fecha_inicio" required>
+      </div>
+      <div>
+        <label for="fecha_fin">{{ textosCrearEvento?.['fechaFinLabel'] }}</label>
+        <input type="datetime-local" class="text" id="fecha_fin" name="fecha_fin">
+      </div>
+      <div>
+        <label for="mapaCrear">{{ textosCrearEvento?.['ubicacionEventoLabel'] }}</label>
+        <div #mapaCrear style="height: 200px; width: 100%;"></div>
+        <p>{{ textosCrearEvento?.['ubicacionEventoParrafo'] }}</p>
+      </div>
+      <div class="button-container">
+        <button type="submit">{{ textosCrearEvento?.['guardarEventoBoton'] }}</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-alert
+  *ngIf="showAlert"
+  [text]="alertText"
+  [backgroundColor]="alertColor"
+>
+</app-alert>
