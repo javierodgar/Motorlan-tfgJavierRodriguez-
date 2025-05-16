@@ -1,19 +1,15 @@
 <?php
-// backend/valoracion/mal_usuario.php
 
-// **Incluir configuración de la base de datos**
 require_once '../db_config.php';
 
-// La conexión PDO ($pdo) ya está disponible desde db_config.php
 
-// Configuración de cabeceras para solicitudes CORS
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
-// Manejar solicitudes preflight (OPTIONS)
+
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200); // OK
     exit;
